@@ -10,7 +10,7 @@ export function SiteFooter() {
           <address className="footer-address">
             <span lang="en">304, Building 8, Sejong Common Campus, 109, Jiphyeonbuk-ro, Sejong, Republic of Korea</span>
             <span lang="ko">세종특별자치시 집현북로 109, 세종공동캠퍼스 8동 304호</span>
-            <a href="tel:+82448639268">044-863-9268</a>
+            <span>Tel: 044-863-9268</span>
           </address>
         </div>
       </div>

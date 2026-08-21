@@ -8,13 +8,14 @@ export default function ContactPage() {
     <SectionPage eyebrow="Contact" title="Contact SAIL" intro="Research, student, and collaboration inquiries are welcome.">
       <div className="contact-layout">
         <div className="contact-panel">
-          <div><span>Email</span><a href="mailto:ajs0420@hanbat.ac.kr">ajs0420@hanbat.ac.kr</a></div>
-          <div><span>Phone</span><a href="tel:+82448639268">044-863-9268</a></div>
+          <div><span>Email</span><p>ajs0420@hanbat.ac.kr</p></div>
+          <div><span>Tel</span><p>044-863-9268</p></div>
           <div>
             <span>Affiliation</span>
             <p>
-              <a href="https://hanbat.ac.kr/aisw/" target="_blank" rel="noreferrer">Department of Artificial Intelligence Software</a><br />
-              <a href="https://www.hanbat.ac.kr/" target="_blank" rel="noreferrer">Hanbat National University</a>
+              Department of Artificial Intelligence Software
+              <br />
+              Hanbat National University
             </p>
           </div>
           <div>
