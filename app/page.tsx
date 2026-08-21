@@ -17,6 +17,8 @@ export default function Home() {
           <div className="hero-shape hero-shape-large" aria-hidden="true" />
           <div className="hero-shape hero-shape-mid" aria-hidden="true" />
           <div className="hero-shape hero-shape-small" aria-hidden="true" />
+          <div className="hero-shape hero-shape-drift" aria-hidden="true" />
+          <div className="hero-shape hero-shape-accent" aria-hidden="true" />
           <div className="container overview-grid">
             <div className="overview-copy">
               <h1><span>Safe &amp; Applied</span><br /><span>Intelligence Lab</span></h1>

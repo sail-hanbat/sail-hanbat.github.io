@@ -28,11 +28,6 @@ const dropdowns = [
 export function SiteHeader({ overlay = false }: { overlay?: boolean }) {
   return (
     <header className={`header-main${overlay ? ' header-overlay' : ' header-inner'}`}>
-      <div className="top-nav">
-        <a href="https://www.hanbat.ac.kr/" target="_blank" rel="noreferrer">
-          Hanbat National University
-        </a>
-      </div>
       <div className="navbar">
         <div className="container nav-container">
           <Link className="wordmark" href="/" aria-label="SAIL home">
