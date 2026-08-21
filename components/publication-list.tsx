@@ -21,6 +21,18 @@ type ConferencePublication = PublicationBase & {
 
 export type Publication = JournalPublication | ConferencePublication;
 
+function formatPublicationVenue(publication: Publication) {
+  if (publication.type === 'Journal') {
+    return publication.journal;
+  }
+
+  const presentation = publication.presentation ? ` · ${publication.presentation}` : '';
+
+  return publication.yearFirst
+    ? `${publication.year} ${publication.conference}${presentation}`
+    : `${publication.conference} ${publication.year}${presentation}`;
+}
+
 export function PublicationList({ publications }: { publications: Publication[] }) {
   return (
     <ol className="publication-list">
@@ -39,11 +51,7 @@ export function PublicationList({ publications }: { publications: Publication[] 
           </h2>
           <p className="publication-authors">{publication.authors}</p>
           <p className="publication-venue">
-            {publication.type === 'Journal'
-              ? <strong>{publication.journal}</strong>
-              : publication.yearFirst
-                ? <>{publication.year} <strong>{publication.conference}</strong>{publication.presentation && ` · ${publication.presentation}`}</>
-                : <><strong>{publication.conference}</strong> {publication.year}{publication.presentation && ` · ${publication.presentation}`}</>}
+            <strong>{formatPublicationVenue(publication)}</strong>
           </p>
         </li>
       ))}
