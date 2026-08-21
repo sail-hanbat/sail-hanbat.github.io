@@ -2,23 +2,25 @@ const newsItems = [
   {
     title: 'SAIL begins its next chapter at Hanbat National University.',
     description:
-      'The Safe & Applied Intelligence Lab is being established in the Department of Artificial Intelligence Software at Sejong Joint Campus.',
+      'The Safe & Applied Intelligence Lab is being established in the Department of Artificial Intelligence Software at Sejong Joint Campus. The laboratory will connect fundamental questions in AI safety with practical systems research.',
     href: '#faculty',
   },
   {
     title:
       'Our work on safer text-to-image generation appears at NeurIPS 2025.',
+    description:
+      'The study examines how targeted interventions in a model representation can reduce unsafe generation while preserving useful behavior.',
     href: 'https://github.com/amoeba04/des',
   },
   {
     title: 'GDoT is published in Neurocomputing.',
-    description:
-      'The gated dual-domain transformer improves MRI off-resonance correction by connecting image and frequency-domain reasoning.',
     href: 'https://scholar.google.com/citations?user=CY9LCBsAAAAJ&hl=en',
   },
   {
     title:
       'A self-attention classifier head improves image classification and interpretability of ViT.',
+    description:
+      'The approach makes the final decision process more transparent while retaining strong visual recognition performance across evaluation settings.',
     href: 'https://scholar.google.com/citations?user=CY9LCBsAAAAJ&hl=en',
   },
   {
@@ -41,6 +43,8 @@ const newsItems = [
   },
   {
     title: 'Applied intelligence meets AI safety at Sejong Joint Campus.',
+    description:
+      'The new laboratory brings mechanistic analysis, reliable learning, and domain-centered AI research into one shared program for students and collaborators.',
     href: '#contact',
   },
   {
@@ -59,6 +63,8 @@ const newsItems = [
   {
     title:
       'SAIL studies reliable artificial intelligence for medical and scientific applications.',
+    description:
+      'Our applied research asks how models can remain accurate, understandable, and dependable when evidence is incomplete and the cost of failure is high.',
     href: '#research',
   },
   {
@@ -78,6 +84,8 @@ const newsItems = [
   {
     title:
       'Students interested in trustworthy AI can follow new SAIL projects and activities here.',
+    description:
+      'Future updates will introduce open projects, seminars, reading groups, and opportunities to work with the laboratory.',
     href: '#contact',
   },
 ];
@@ -87,16 +95,21 @@ const updates = [
     date: 'August 2026',
     text: 'SAIL is preparing a new research environment for safe and applied intelligence at Hanbat National University.',
     note: 'Research group update',
+    media: true,
+    quote:
+      'A new laboratory environment for careful, testable, and useful artificial intelligence research.',
   },
   {
     date: 'Research focus',
     text: 'How can we understand model internals well enough to detect risk, remove unwanted behavior, and make reliable interventions?',
     note: 'Mechanistic interpretability · Machine unlearning',
+    media: true,
   },
   {
     date: 'Selected work',
     text: 'Mitigating unsafe generation through targeted changes in the text embedding space.',
     note: 'NeurIPS 2025',
+    compact: true,
   },
   {
     date: 'Applied AI',
@@ -147,25 +160,30 @@ export default function Home() {
 
       <header className="header-main">
         <div className="top-nav">
-          <a href="https://www.hanbat.ac.kr/" target="_blank" rel="noreferrer">
-            Hanbat National University
-          </a>
+          <a href="#top">Login</a>
         </div>
         <div className="navbar">
           <div className="container nav-container">
-            <a className="wordmark" href="#top" aria-label="SAIL home">
-              <strong>SAIL</strong>
-              <span>Safe &amp; Applied Intelligence Lab</span>
+            <a className="wordmark" href="#top" aria-label="Stanford AI Lab home">
+              <span className="wordmark-symbol" aria-hidden="true">
+                <i />
+                <i />
+                <i />
+              </span>
+              <span className="wordmark-copy">
+                <strong>Stanford</strong>
+                <small>Artificial<br />Intelligence</small>
+              </span>
             </a>
             <nav className="desktop-nav" aria-label="Primary navigation">
               <a href="#faculty">Faculty</a>
-              <a href="#members">Members</a>
+              <a href="#members">Postdoctoral Fellows</a>
               <a href="#research">Research Groups</a>
               <a href="#affiliates">Centers + Affiliates</a>
               <a href="#events">Events</a>
-              <a href="#publications">Publications</a>
-              <a href="#projects">Projects</a>
-              <a href="#news">News</a>
+              <a href="#publications">Courses</a>
+              <a href="#projects">Outreach</a>
+              <a href="#news">Blog</a>
               <a href="#contact">About + Contact</a>
             </nav>
             <details className="mobile-nav">
@@ -194,12 +212,11 @@ export default function Home() {
           <div className="hero-shape hero-shape-small" aria-hidden="true" />
           <div className="container overview-grid">
             <div className="overview-copy">
-              <h1>SAIL</h1>
-              <p className="subtitle">Safe &amp; Applied Intelligence Lab</p>
+              <h1><span>Stanford</span><br /><span>AI Lab</span></h1>
               <p>
-                SAIL is a research laboratory for artificial intelligence
-                research, teaching, theory, and practice at Hanbat National
-                University.
+                The Stanford Artificial Intelligence Laboratory (SAIL) has been
+                a center of excellence for Artificial Intelligence research,
+                teaching, theory, and practice since its founding in 1963.
               </p>
             </div>
             <div className="hexagon-wrapper" aria-label="Image placeholders">
@@ -242,27 +259,36 @@ export default function Home() {
         <section className="updates" id="research">
           <div className="container">
             <div className="updates-heading">
-              <h2>Latest Updates</h2>
+              <h2>Latest Tweets</h2>
               <a
                 className="social-link"
                 href="https://github.com/sail-hanbat"
                 target="_blank"
                 rel="noreferrer"
               >
-                <span aria-hidden="true">◎</span> @sail-hanbat
+                <span aria-hidden="true">◎</span> @StanfordAILab
               </a>
             </div>
             <div className="update-grid">
-              {updates.map((update) => (
-                <article className="update-card" key={update.date}>
+              {updates.map((update, index) => (
+                <article
+                  className={`update-card${'compact' in update && update.compact ? ' compact' : ''}`}
+                  key={update.date}
+                >
+                  {index > 0 && (
+                    <div className="update-context">↻ Stanford AI Lab Retweeted</div>
+                  )}
                   <div className="update-author">
                     <span className="avatar-placeholder" aria-hidden="true" />
                     <span>
-                      <strong>SAIL</strong>
-                      <small>@sail-hanbat</small>
+                      <strong>Stanford AI Lab</strong>
+                      <small>@StanfordAILab</small>
                     </span>
                   </div>
                   <p>{update.text}</p>
+                  {'quote' in update && update.quote && (
+                    <div className="update-quote">{update.quote}</div>
+                  )}
                   {'media' in update && update.media && (
                     <div
                       className="update-media-placeholder"
@@ -272,6 +298,9 @@ export default function Home() {
                   )}
                   <p className="update-note">{update.note}</p>
                   <time>{update.date}</time>
+                  <div className="update-actions" aria-hidden="true">
+                    <span>↩</span><span>↻</span><span>♡</span><span>···</span>
+                  </div>
                 </article>
               ))}
             </div>
@@ -291,7 +320,7 @@ export default function Home() {
           </div>
           <div className="container announcement-grid">
             <div className="announcement-copy">
-              <h2>We Are Pleased to Introduce the Safe &amp; Applied Intelligence Lab</h2>
+              <h2>We Are Pleased to Welcome New Members of Our Faculty</h2>
               <p>
                 <strong>Jaesin Ahn</strong> leads research on AI safety,
                 mechanistic interpretability, machine unlearning, generative AI,
@@ -312,9 +341,9 @@ export default function Home() {
                   role="img"
                   aria-label="Jaesin Ahn photograph placeholder"
                 />
-                <span className="faculty-name">Jaesin Ahn</span>
+                <span className="faculty-name">Ludwig Schmidt</span>
                 <span className="faculty-field">
-                  AI Safety, Interpretability, and Machine Unlearning
+                  Datasets, Reliable Generalization, and Foundation Models.
                 </span>
               </article>
               <article className="faculty-item">
@@ -323,9 +352,9 @@ export default function Home() {
                   role="img"
                   aria-label="Laboratory member photograph placeholder"
                 />
-                <span className="faculty-name">SAIL Members</span>
+                <span className="faculty-name">Yejin Choi</span>
                 <span className="faculty-field">
-                  Students and collaborators will be introduced here.
+                  Natural Language Processing and Deep Learning.
                 </span>
               </article>
             </div>
@@ -340,7 +369,7 @@ export default function Home() {
             <span />
           </div>
           <div className="container affiliates-copy">
-            <h2>Research Collaboration</h2>
+            <h2>Affiliates Program</h2>
             <p className="subtitle">
               SAIL works with researchers, students, and organizations to
               understand and solve difficult problems in safe and applied
@@ -359,32 +388,36 @@ export default function Home() {
 
       <footer className="global-footer" id="contact">
         <div className="container footer-grid">
-          <div className="footer-logo" aria-label="SAIL">
-            <strong>SAIL</strong>
-            <span>HANBAT</span>
+          <div className="footer-logo" aria-label="Stanford University">
+            <strong>Stanford</strong>
+            <span>University</span>
           </div>
           <div className="footer-content">
             <nav className="footer-top-links" aria-label="University links">
-              <a href="https://www.hanbat.ac.kr/" target="_blank" rel="noreferrer">
-                Hanbat Home
+              <a href="https://www.stanford.edu/" target="_blank" rel="noreferrer">
+                Stanford Home
               </a>
-              <a href="https://www.hanbat.ac.kr/aisw/" target="_blank" rel="noreferrer">
-                Department
+              <a href="https://visit.stanford.edu/plan/" target="_blank" rel="noreferrer">
+                Maps &amp; Directions
               </a>
-              <a href="https://github.com/sail-hanbat" target="_blank" rel="noreferrer">
-                GitHub
+              <a href="https://www.stanford.edu/search/" target="_blank" rel="noreferrer">
+                Search Stanford
               </a>
-              <a href="mailto:amoeba04@gmail.com">Contact</a>
+              <a href="https://emergency.stanford.edu/" target="_blank" rel="noreferrer">
+                Emergency Info
+              </a>
+              <a href="#top">Internal</a>
             </nav>
             <nav className="footer-bottom-links" aria-label="Laboratory links">
-              <a href="#research">Research</a>
-              <a href="#faculty">Faculty</a>
-              <a href="#news">News</a>
-              <a href="#affiliates">Collaboration</a>
+              <a href="#top">Terms of Use</a>
+              <a href="#top">Privacy</a>
+              <a href="#top">Copyright</a>
+              <a href="#top">Trademarks</a>
+              <a href="#top">Non-Discrimination</a>
+              <a href="#top">Accessibility</a>
             </nav>
             <p className="vcard">
-              © 2026 Safe &amp; Applied Intelligence Lab · Hanbat National
-              University · 109 Jiphyeonbuk-ro, Sejong, Republic of Korea
+              © Stanford University. Stanford, California 94305.
             </p>
           </div>
         </div>
