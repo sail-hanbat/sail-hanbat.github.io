@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { formatNewsDate, getNewsExcerpt, type NewsPost } from '@/lib/news';
 
 export function NewsCard({ post }: { post: NewsPost }) {
-  const href = `/activities/news/${post.slug}/`;
+  const href = `/activities/news/post/?slug=${encodeURIComponent(post.slug)}`;
 
   return (
     <article className="news-card">

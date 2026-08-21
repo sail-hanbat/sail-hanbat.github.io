@@ -1,8 +1,7 @@
 import type { Metadata } from 'next';
-import { NewsCard } from '@/components/news-card';
+import { NewsFeed } from '@/components/news-feed';
 import { SiteFooter } from '@/components/site-footer';
 import { SiteHeader } from '@/components/site-header';
-import { getAllNewsPosts } from '@/lib/news';
 
 export const metadata: Metadata = {
   title: 'News',
@@ -10,8 +9,6 @@ export const metadata: Metadata = {
 };
 
 export default function NewsPage() {
-  const posts = getAllNewsPosts();
-
   return (
     <main className="interior-page">
       <SiteHeader />
@@ -24,13 +21,7 @@ export default function NewsPage() {
       </section>
       <section className="news-index">
         <div className="container">
-          {posts.length > 0 ? (
-            <div className="news-grid news-index-grid">
-              {posts.map((post) => <NewsCard key={post.slug} post={post} />)}
-            </div>
-          ) : (
-            <p className="empty-state">News will be posted here.</p>
-          )}
+          <NewsFeed />
         </div>
       </section>
       <SiteFooter />

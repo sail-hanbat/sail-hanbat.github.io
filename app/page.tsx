@@ -1,12 +1,9 @@
 import Link from 'next/link';
-import { NewsCard } from '@/components/news-card';
+import { NewsFeed } from '@/components/news-feed';
 import { SiteFooter } from '@/components/site-footer';
 import { SiteHeader } from '@/components/site-header';
-import { getAllNewsPosts } from '@/lib/news';
 
 export default function Home() {
-  const latestNews = getAllNewsPosts().slice(0, 5);
-
   return (
     <main className="homepage">
       <a className="skip-link" href="#main">Skip to content</a>
@@ -53,13 +50,7 @@ export default function Home() {
               <h2>Latest News</h2>
               <Link className="arrow view-all-link" href="/activities/news/">View All News</Link>
             </div>
-            {latestNews.length > 0 ? (
-              <div className="news-grid">
-                {latestNews.map((post) => <NewsCard key={post.slug} post={post} />)}
-              </div>
-            ) : (
-              <p className="empty-state">News will be posted here.</p>
-            )}
+            <NewsFeed limit={5} />
           </div>
         </section>
 
