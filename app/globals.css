@@ -341,7 +341,7 @@ li {
 
 .overview-copy {
   margin: 70px 0 0 40px;
-  max-width: 520px;
+  max-width: 570px;
 }
 
 .overview-copy h1 {
@@ -355,7 +355,7 @@ li {
 }
 
 .overview-copy p {
-  width: 520px;
+  width: 570px;
   margin: 0;
   font-size: 17px;
   line-height: 1.65;
@@ -377,9 +377,9 @@ li {
 }
 
 .hex-1 { top: 0; left: 112px; }
-.hex-2 { top: 0; left: 332px; }
-.hex-3 { top: 164px; left: 222px; }
-.hex-4 { top: 164px; left: 444px; }
+.hex-2 { top: 0; left: 304px; }
+.hex-3 { top: 145px; left: 208px; }
+.hex-4 { top: 145px; left: 400px; }
 
 /* News cards */
 .latest-news {
@@ -917,7 +917,7 @@ li {
   }
 
   .overview-copy p {
-    width: 440px;
+    width: 480px;
   }
 
   .hexagon-wrapper {
@@ -1018,9 +1018,9 @@ li {
   }
 
   .hex-1 { top: 0; left: 58px; }
-  .hex-2 { top: 0; left: 188px; }
-  .hex-3 { top: 108px; left: 123px; }
-  .hex-4 { top: 108px; left: 253px; }
+  .hex-2 { top: 0; left: 183px; }
+  .hex-3 { top: 96px; left: 120px; }
+  .hex-4 { top: 96px; left: 245px; }
 
   .hero-shape-large {
     right: -65%;

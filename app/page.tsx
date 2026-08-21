@@ -23,14 +23,15 @@ export default function Home() {
               <p>
                 SAIL focuses on advancing trustworthy artificial intelligence
                 and developing AI solutions for real-world applications. Our
-                research interests include generative AI, natural language
-                processing, computer vision, machine unlearning, and
-                mechanistic interpretability. We aim to understand
-                and improve how AI systems learn and behave while developing
-                effective technologies that can address practical problems
-                across diverse domains. Our research is not limited to these
-                areas, and we continuously explore new and meaningful problems
-                in artificial intelligence.
+                research spans generative AI, natural language processing, and
+                computer vision, including problems such as image enhancement.
+                Our methodological interests include machine unlearning,
+                mechanistic interpretability, model editing, and reliable
+                learning. We aim to understand and improve how AI systems learn
+                and behave while developing effective technologies that can
+                address practical problems across diverse domains. Our research
+                is not limited to these areas, and we continuously explore new
+                and meaningful problems in artificial intelligence.
               </p>
             </div>
             <div className="hexagon-wrapper" aria-label="Image placeholders">

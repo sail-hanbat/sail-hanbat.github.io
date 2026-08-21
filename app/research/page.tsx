@@ -17,18 +17,18 @@ export default function ResearchPage() {
           <p>Understanding, evaluating, and improving the behavior of learning systems.</p>
           <ul>
             <li>Mechanistic interpretability</li>
-            <li>Machine unlearning and intervention</li>
+            <li>Machine unlearning, model editing, and intervention</li>
             <li>Robust, reliable, and accountable AI</li>
           </ul>
         </article>
         <article className="research-track">
           <span>Research Area</span>
-          <h2>Visual, Multimodal &amp; Generative AI</h2>
-          <p>Exploring advanced learning methods across vision, language, and multiple modalities.</p>
+          <h2>Generative, Language &amp; Visual AI</h2>
+          <p>Exploring advanced learning methods across text, images, and multiple modalities.</p>
           <ul>
-            <li>Computer vision and multimodal learning</li>
             <li>Generative models</li>
-            <li>Deep learning for complex data and tasks</li>
+            <li>Natural language processing and multimodal learning</li>
+            <li>Computer vision and image enhancement</li>
           </ul>
         </article>
         <article className="research-track">

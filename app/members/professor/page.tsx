@@ -17,7 +17,7 @@ export default function ProfessorPage() {
           <p className="profile-role">Assistant Professor</p>
           <p>Department of Artificial Intelligence Software<br />Hanbat National University</p>
           <h3>Research Interests</h3>
-          <p>Generative AI, natural language processing, computer vision, machine unlearning, mechanistic interpretability, trustworthy AI, and AI for real-world domains.</p>
+          <p>Generative AI, natural language processing, computer vision, image enhancement, machine unlearning, mechanistic interpretability, model editing, reliable learning, trustworthy AI, and AI for real-world domains.</p>
         </div>
       </div>
     </SectionPage>
