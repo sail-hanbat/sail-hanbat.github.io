@@ -23,9 +23,9 @@ export default function Home() {
               <p>
                 SAIL focuses on advancing trustworthy artificial intelligence
                 and developing AI solutions for real-world applications. Our
-                research interests include mechanistic interpretability,
-                machine unlearning, reliable learning, computer vision,
-                multimodal learning, and generative AI. We aim to understand
+                research interests include generative AI, natural language
+                processing, computer vision, machine unlearning, and
+                mechanistic interpretability. We aim to understand
                 and improve how AI systems learn and behave while developing
                 effective technologies that can address practical problems
                 across diverse domains. Our research is not limited to these
@@ -38,7 +38,6 @@ export default function Home() {
               <div className="hex-img hex-2" aria-label="Image placeholder" />
               <div className="hex-img hex-3" aria-label="Image placeholder" />
               <div className="hex-img hex-4" aria-label="Image placeholder" />
-              <div className="hex-img hex-5" aria-label="Image placeholder" />
             </div>
           </div>
         </section>

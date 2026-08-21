@@ -335,13 +335,13 @@ li {
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: 33.333% 58.333%;
-  gap: 8.333%;
+  grid-template-columns: 47% 53%;
+  gap: 0;
 }
 
 .overview-copy {
   margin: 70px 0 0 40px;
-  max-width: 390px;
+  max-width: 520px;
 }
 
 .overview-copy h1 {
@@ -355,7 +355,7 @@ li {
 }
 
 .overview-copy p {
-  width: 390px;
+  width: 520px;
   margin: 0;
   font-size: 17px;
   line-height: 1.65;
@@ -363,24 +363,23 @@ li {
 
 .hexagon-wrapper {
   position: relative;
-  left: 12.5px;
+  left: 0;
   width: 100%;
-  min-height: 620px;
+  min-height: 430px;
 }
 
 .hex-img {
   position: absolute;
-  width: 202px;
-  height: 232px;
+  width: 174px;
+  height: 200px;
   background: #f1f1f1;
   clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
 }
 
 .hex-1 { top: 0; left: 112px; }
 .hex-2 { top: 0; left: 332px; }
-.hex-3 { top: 190px; left: 0; }
-.hex-4 { top: 190px; left: 222px; }
-.hex-5 { top: 380px; left: 112px; }
+.hex-3 { top: 164px; left: 222px; }
+.hex-4 { top: 164px; left: 444px; }
 
 /* News cards */
 .latest-news {
@@ -909,12 +908,16 @@ li {
   }
 
   .overview-grid {
-    grid-template-columns: 40% 60%;
+    grid-template-columns: 48% 52%;
     gap: 0;
   }
 
   .overview-copy {
     margin-left: 0;
+  }
+
+  .overview-copy p {
+    width: 440px;
   }
 
   .hexagon-wrapper {
@@ -1001,24 +1004,23 @@ li {
   }
 
   .hexagon-wrapper {
-    left: -15px;
+    left: 0;
     width: 390px;
-    height: 420px;
-    min-height: 420px;
+    height: 280px;
+    min-height: 280px;
     margin-top: 40px;
     transform: none;
   }
 
   .hex-img {
-    width: 130px;
-    height: 150px;
+    width: 115px;
+    height: 132px;
   }
 
-  .hex-1 { top: 0; left: 78px; }
-  .hex-2 { top: 0; left: 223px; }
-  .hex-3 { top: 125px; left: 7px; }
-  .hex-4 { top: 125px; left: 150px; }
-  .hex-5 { top: 250px; left: 78px; }
+  .hex-1 { top: 0; left: 58px; }
+  .hex-2 { top: 0; left: 188px; }
+  .hex-3 { top: 108px; left: 123px; }
+  .hex-4 { top: 108px; left: 253px; }
 
   .hero-shape-large {
     right: -65%;
