@@ -26,11 +26,9 @@ function formatPublicationVenue(publication: Publication) {
     return publication.journal;
   }
 
-  const presentation = publication.presentation ? ` · ${publication.presentation}` : '';
-
   return publication.yearFirst
-    ? `${publication.year} ${publication.conference}${presentation}`
-    : `${publication.conference} ${publication.year}${presentation}`;
+    ? `${publication.year} ${publication.conference}`
+    : `${publication.conference} ${publication.year}`;
 }
 
 export function PublicationList({ publications }: { publications: Publication[] }) {
@@ -52,6 +50,7 @@ export function PublicationList({ publications }: { publications: Publication[] 
           <p className="publication-authors">{publication.authors}</p>
           <p className="publication-venue">
             <strong>{formatPublicationVenue(publication)}</strong>
+            {publication.type === 'Conference' && publication.presentation && ` · ${publication.presentation}`}
           </p>
         </li>
       ))}
