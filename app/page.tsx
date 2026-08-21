@@ -21,12 +21,16 @@ export default function Home() {
             <div className="overview-copy">
               <h1><span>Safe &amp; Applied</span><br /><span>Intelligence Lab</span></h1>
               <p>
-                SAIL pursues two broad directions in artificial intelligence.
-                We study trustworthy AI to understand, steer, and improve
-                learning systems, including their internal mechanisms and
-                unwanted behaviors. We also develop practical AI for real-world
-                domains, exploring vision, multimodal and generative models,
-                and field-ready solutions under real operating constraints.
+                SAIL focuses on advancing trustworthy artificial intelligence
+                and developing AI solutions for real-world applications. Our
+                research interests include mechanistic interpretability,
+                machine unlearning, reliable learning, computer vision,
+                multimodal learning, and generative AI. We aim to understand
+                and improve how AI systems learn and behave while developing
+                effective technologies that can address practical problems
+                across diverse domains. Our research is not limited to these
+                areas, and we continuously explore new and meaningful problems
+                in artificial intelligence.
               </p>
             </div>
             <div className="hexagon-wrapper" aria-label="Image placeholders">
@@ -63,8 +67,8 @@ export default function Home() {
               <h2>People at SAIL</h2>
               <p>
                 SAIL is led by <strong>Prof. Jaesin Ahn</strong>. We welcome
-                students who want to investigate trustworthy AI or build
-                practical AI systems for real-world domains.
+                students interested in trustworthy AI, advanced learning
+                methods, and practical AI systems for real-world domains.
               </p>
               <Link className="arrow" href="/members/professor/">Meet the Lab</Link>
             </div>
