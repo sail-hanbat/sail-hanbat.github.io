@@ -53,7 +53,7 @@ export default function ProfessorPage() {
         <ul className="professor-list">
           <li>
             <strong>Assistant Professor</strong>, Department of Artificial Intelligence Software,
-            Hanbat National University, 2026–Present
+            Hanbat National University, Sep. 2026–Present
           </li>
           <li>
             <strong>Postdoctoral Researcher</strong>, Kyungpook National University, Daegu,
