@@ -1,5 +1,3 @@
-import Link from 'next/link';
-
 export function SiteFooter() {
   return (
     <footer className="global-footer" id="contact">
@@ -9,20 +7,10 @@ export function SiteFooter() {
           <span>Safe &amp; Applied Intelligence Lab</span>
         </div>
         <div className="footer-content">
-          <nav className="footer-top-links" aria-label="Laboratory links">
-            <Link href="/research/">Research</Link>
-            <Link href="/members/professor/">Members</Link>
-            <Link href="/publications/international/">Publications</Link>
-            <Link href="/activities/news/">News</Link>
-            <Link href="/contact/">Contact</Link>
-          </nav>
-          <nav className="footer-bottom-links" aria-label="University links">
-            <a href="https://www.hanbat.ac.kr/" target="_blank" rel="noreferrer">Hanbat National University</a>
-            <a href="https://www.hanbat.ac.kr/aisw/" target="_blank" rel="noreferrer">Department of Artificial Intelligence Software</a>
-          </nav>
-          <p className="vcard">
-            Sejong Joint Campus · Sejong, Republic of Korea
-          </p>
+          <address className="footer-address">
+            <span lang="en">304, Building 8, Sejong Common Campus, 109, Jiphyeonbuk-ro, Sejong, Republic of Korea</span>
+            <span lang="ko">세종특별자치시 집현북로 109, 세종공동캠퍼스 8동 304호</span>
+          </address>
         </div>
       </div>
     </footer>
