@@ -5,8 +5,29 @@ export const metadata: Metadata = { title: 'Challenges' };
 
 export default function ChallengesPage() {
   return (
-    <SectionPage eyebrow="Activities" title="Challenges" intro="Research challenges, competitions, and shared problem-solving at SAIL.">
-      <div className="empty-panel"><p>Challenge activities will be added here.</p></div>
+    <SectionPage eyebrow="Activities" title="Challenges" intro="Research competitions and external recognition earned through practical AI problem-solving.">
+      <div className="achievement-list">
+        <article>
+          <div className="achievement-rank"><strong>7th</strong><span>Top 1.11%</span></div>
+          <div>
+            <time>2025</time>
+            <h2>AI CHAMPION Challenge</h2>
+            <p>Recipient of the IITP President&apos;s Award in the challenge hosted by the Ministry of Science and ICT (MSIT).</p>
+          </div>
+        </article>
+        <article>
+          <div className="achievement-rank"><strong>8th</strong><span>Top 0.6%</span></div>
+          <div>
+            <time>2023</time>
+            <h2>
+              <a href="https://neurips.cc/virtual/2023/competition/66581" target="_blank" rel="noreferrer">
+                NeurIPS Machine Unlearning Challenge
+              </a>
+            </h2>
+            <p>Placed eighth in the first Machine Unlearning Challenge organized with Google DeepMind as part of the NeurIPS 2023 Competition Track.</p>
+          </div>
+        </article>
+      </div>
     </SectionPage>
   );
 }
