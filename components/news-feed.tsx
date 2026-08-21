@@ -2,8 +2,15 @@
 
 import { useCallback, useEffect, useState } from 'react';
 import { NewsCard } from '@/components/news-card';
-import { FALLBACK_NEWS, newsRowToPost, type NewsPost, type NewsRow } from '@/lib/news';
-import { supabase } from '@/lib/supabase';
+import {
+  cacheNews,
+  FALLBACK_NEWS,
+  getCachedNews,
+  newsRowToPost,
+  type NewsPost,
+  type NewsRow,
+} from '@/lib/news';
+import { publicSupabase } from '@/lib/supabase';
 
 export function NewsFeed({ limit }: { limit?: number }) {
   const [posts, setPosts] = useState<NewsPost[]>(
@@ -12,9 +19,9 @@ export function NewsFeed({ limit }: { limit?: number }) {
   const [loaded, setLoaded] = useState(false);
 
   const loadPosts = useCallback(async () => {
-    let query = supabase
+    let query = publicSupabase
       .from('news_posts')
-      .select('id, slug, title, body, published, published_at, created_at, updated_at')
+      .select('id, slug, title, body, published, published_at')
       .eq('published', true)
       .order('published_at', { ascending: false });
 
@@ -22,14 +29,20 @@ export function NewsFeed({ limit }: { limit?: number }) {
 
     const { data, error } = await query;
     if (!error && data) {
-      setPosts((data as NewsRow[]).map(newsRowToPost));
+      const nextPosts = (data as NewsRow[]).map(newsRowToPost);
+      setPosts(nextPosts);
+      cacheNews(nextPosts, limit);
     }
     setLoaded(true);
   }, [limit]);
 
   useEffect(() => {
-    const loadTimer = window.setTimeout(() => void loadPosts(), 0);
-    const channel = supabase
+    const loadTimer = window.setTimeout(() => {
+      const cachedPosts = getCachedNews(limit);
+      if (cachedPosts) setPosts(cachedPosts);
+      void loadPosts();
+    }, 0);
+    const channel = publicSupabase
       .channel(`public-news-${limit ?? 'all'}`)
       .on(
         'postgres_changes',
@@ -40,7 +53,7 @@ export function NewsFeed({ limit }: { limit?: number }) {
 
     return () => {
       window.clearTimeout(loadTimer);
-      void supabase.removeChannel(channel);
+      void publicSupabase.removeChannel(channel);
     };
   }, [limit, loadPosts]);
 

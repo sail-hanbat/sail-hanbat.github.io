@@ -85,11 +85,11 @@ export default function ProfessorPage() {
         <h2>Honors &amp; Awards</h2>
         <ul className="professor-list">
           <li>
-            <strong>IITP President&apos;s Award</strong>, AI CHAMPION Challenge, 2025
-          </li>
-          <li>
             <strong>Selected Presenter, Doctoral Colloquium</strong>, Korean Conference on Computer
             Vision (KCCV), 2026
+          </li>
+          <li>
+            <strong>IITP President&apos;s Award</strong>, AI CHAMPION Challenge, 2025
           </li>
         </ul>
       </section>
