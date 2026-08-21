@@ -643,14 +643,14 @@ li {
 
 .profile-layout {
   display: grid;
-  grid-template-columns: 270px 1fr;
-  gap: 55px;
+  grid-template-columns: 170px 1fr;
+  gap: 42px;
   align-items: start;
 }
 
 .profile-photo {
   display: block;
-  width: 240px;
+  width: 170px;
   height: auto;
 }
 
