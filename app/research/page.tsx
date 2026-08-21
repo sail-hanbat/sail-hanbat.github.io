@@ -28,7 +28,7 @@ export default function ResearchPage() {
           <ul>
             <li>Generative models</li>
             <li>Natural language processing and multimodal learning</li>
-            <li>Computer vision and image enhancement</li>
+            <li>Computer vision</li>
           </ul>
         </article>
         <article className="research-track">

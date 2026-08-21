@@ -24,11 +24,10 @@ export default function Home() {
                 Safe &amp; Applied Intelligence Lab (SAIL) focuses on advancing
                 trustworthy artificial intelligence and developing AI solutions
                 for real-world applications. We explore generative AI (GenAI),
-                natural language processing (NLP), and computer vision (CV),
-                including problems such as image enhancement. Within trustworthy
-                AI, we are particularly interested in machine unlearning,
-                mechanistic interpretability, and privacy-preserving AI. We aim
-                to understand and improve how AI systems learn and behave while
+                natural language processing (NLP), and computer vision (CV).
+                Our specific research interests include image enhancement,
+                machine unlearning, and mechanistic interpretability. We aim to
+                understand and improve how AI systems learn and behave while
                 developing effective technologies that can address practical
                 problems across diverse domains. Our research is not limited to
                 these areas, and we continuously explore new and meaningful
