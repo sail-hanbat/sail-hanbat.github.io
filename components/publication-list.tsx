@@ -1,14 +1,24 @@
 import type { ReactNode } from 'react';
 
-export type Publication = {
+type PublicationBase = {
   year: string;
-  type: 'Journal' | 'Conference';
   title: string;
   authors: ReactNode;
-  venue: string;
   href?: string;
-  note?: string;
 };
+
+type JournalPublication = PublicationBase & {
+  type: 'Journal';
+  journal: string;
+};
+
+type ConferencePublication = PublicationBase & {
+  type: 'Conference';
+  conference: string;
+  presentation?: 'Findings' | 'Oral' | 'Spotlight' | 'Special Track' | 'Workshop';
+};
+
+export type Publication = JournalPublication | ConferencePublication;
 
 export function PublicationList({ publications }: { publications: Publication[] }) {
   return (
@@ -18,7 +28,6 @@ export function PublicationList({ publications }: { publications: Publication[] 
           <div className="publication-meta">
             <span>{publication.type}</span>
             <time>{publication.year}</time>
-            {publication.note && <em>{publication.note}</em>}
           </div>
           <h2>
             {publication.href ? (
@@ -28,7 +37,11 @@ export function PublicationList({ publications }: { publications: Publication[] 
             ) : publication.title}
           </h2>
           <p className="publication-authors">{publication.authors}</p>
-          <p className="publication-venue">{publication.venue}</p>
+          <p className="publication-venue">
+            {publication.type === 'Journal'
+              ? publication.journal
+              : `${publication.conference} ${publication.year}${publication.presentation ? ` · ${publication.presentation}` : ''}`}
+          </p>
         </li>
       ))}
     </ol>

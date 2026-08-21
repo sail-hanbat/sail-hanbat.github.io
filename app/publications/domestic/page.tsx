@@ -10,7 +10,7 @@ const publications: Publication[] = [
     type: 'Journal',
     title: '교차 레이어 트랜스코더 기반 Gemma-3-1B의 PHI 비식별화 결정 회로 분석',
     authors: <><strong>Jaesin Ahn</strong>, Junhyun Bae, Jekyung Lee, and Heechul Jung</>,
-    venue: '전자공학회논문지 (KCI).',
+    journal: '전자공학회논문지',
   },
 ];
 

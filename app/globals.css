@@ -936,8 +936,7 @@ li {
 }
 
 .publication-meta span,
-.publication-meta time,
-.publication-meta em {
+.publication-meta time {
   font-size: 11px;
   font-style: normal;
   font-weight: 600;
@@ -951,14 +950,6 @@ li {
 
 .publication-meta time {
   color: var(--sail-red);
-}
-
-.publication-meta em {
-  grid-column: 1 / -1;
-  width: max-content;
-  background: #f2e9e9;
-  color: var(--sail-red);
-  padding: 3px 7px;
 }
 
 .publication-item h2 {
@@ -1893,10 +1884,6 @@ li {
     position: static;
     display: flex;
     margin-bottom: 13px;
-  }
-
-  .publication-meta em {
-    width: auto;
   }
 
   .publication-item h2 {
