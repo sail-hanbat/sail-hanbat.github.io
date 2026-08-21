@@ -1,7 +1,8 @@
 'use client';
 
 import type { FormEvent } from 'react';
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useSearchParams } from 'next/navigation';
 import type { Session } from '@supabase/supabase-js';
 import { formatNewsDate, type NewsRow } from '@/lib/news';
 import { supabase } from '@/lib/supabase';
@@ -57,6 +58,9 @@ function dateInput(value: string) {
 }
 
 export function NewsAdmin() {
+  const searchParams = useSearchParams();
+  const requestedEditSlug = searchParams.get('edit') ?? '';
+  const handledEditRequest = useRef('');
   const [session, setSession] = useState<Session | null>(null);
   const [authReady, setAuthReady] = useState(false);
   const [accessReady, setAccessReady] = useState(false);
@@ -174,6 +178,34 @@ export function NewsAdmin() {
     [posts],
   );
 
+  useEffect(() => {
+    if (!profile || !requestedEditSlug || posts.length === 0) return;
+    const requestKey = `${profile.email}:${requestedEditSlug}`;
+    if (handledEditRequest.current === requestKey) return;
+    handledEditRequest.current = requestKey;
+
+    const requestedPost = posts.find((post) => post.slug === requestedEditSlug);
+    const openTimer = window.setTimeout(() => {
+      if (!requestedPost) {
+        setError('The requested news post could not be found.');
+        return;
+      }
+      setMessage('');
+      setError('');
+      setEditor({
+        id: requestedPost.id,
+        title: requestedPost.title,
+        slug: requestedPost.slug,
+        body: requestedPost.body,
+        published: requestedPost.published,
+        publishedAt: dateInput(requestedPost.published_at),
+      });
+      window.scrollTo({ top: 300, behavior: 'smooth' });
+    }, 0);
+
+    return () => window.clearTimeout(openTimer);
+  }, [posts, profile, requestedEditSlug]);
+
   async function handleAuth(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     clearNotice();
@@ -185,7 +217,7 @@ export function NewsAdmin() {
         email,
         password: authPassword,
         options: {
-          emailRedirectTo: `${window.location.origin}/activities/news/admin/`,
+          emailRedirectTo: `${window.location.origin}${window.location.pathname}${window.location.search}`,
         },
       });
 
@@ -321,7 +353,8 @@ export function NewsAdmin() {
             <h2>{authMode === 'signin' ? 'Administrator sign in' : 'Create administrator account'}</h2>
             <p>
               Only email addresses approved by the SAIL owner can access the dashboard.
-              The initial owner is <strong>{OWNER_EMAIL}</strong>.
+              The initial owner is <strong>{OWNER_EMAIL}</strong>. No password has been
+              preassigned; on your first visit, create an account and choose your own password.
             </p>
             <label className="admin-field">
               <span>Email</span>

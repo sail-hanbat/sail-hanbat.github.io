@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { Suspense } from 'react';
 import { NewsAdmin } from '@/components/news-admin';
 import { SiteFooter } from '@/components/site-footer';
 import { SiteHeader } from '@/components/site-header';
@@ -20,7 +21,9 @@ export default function NewsAdminPage() {
           <p>Publish and manage laboratory news.</p>
         </div>
       </section>
-      <NewsAdmin />
+      <Suspense fallback={<section className="admin-shell"><div className="container"><p className="news-status">Checking access…</p></div></section>}>
+        <NewsAdmin />
+      </Suspense>
       <SiteFooter />
     </main>
   );

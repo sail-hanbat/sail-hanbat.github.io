@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { NewsFeed } from '@/components/news-feed';
 import { SiteFooter } from '@/components/site-footer';
 import { SiteHeader } from '@/components/site-header';
@@ -17,6 +18,9 @@ export default function NewsPage() {
           <span className="eyebrow">Activities</span>
           <h1>News</h1>
           <p>Research, publication, and laboratory updates from SAIL.</p>
+          <Link className="admin-button primary news-action-button" href="/activities/news/admin/?action=new">
+            Write News
+          </Link>
         </div>
       </section>
       <section className="news-index">

@@ -67,7 +67,15 @@ export function NewsPostClient() {
         <div className="container article-container">
           <Link className="back-link" href="/activities/news/">← News</Link>
           <h1>{post.title}</h1>
-          <time dateTime={post.date}>{formatNewsDate(post.date)}</time>
+          <div className="news-article-meta">
+            <time dateTime={post.date}>{formatNewsDate(post.date)}</time>
+            <Link
+              className="admin-button primary news-edit-button"
+              href={`/activities/news/admin/?edit=${encodeURIComponent(post.slug)}`}
+            >
+              Edit News
+            </Link>
+          </div>
         </div>
       </header>
       <div className="container article-container news-article-content">

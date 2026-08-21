@@ -736,6 +736,22 @@ li {
   color: #666;
 }
 
+.news-action-button {
+  display: inline-block;
+  margin-top: 26px;
+}
+
+.news-article-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.news-edit-button {
+  flex: 0 0 auto;
+}
+
 .news-article-content {
   min-height: 420px;
   padding-top: 80px;
@@ -1463,6 +1479,11 @@ li {
   .news-article-content {
     padding-top: 60px;
     padding-bottom: 80px;
+  }
+
+  .news-article-meta {
+    align-items: flex-start;
+    flex-direction: column;
   }
 
   .news-body p,
