@@ -6,21 +6,35 @@ export const metadata: Metadata = { title: 'Contact' };
 export default function ContactPage() {
   return (
     <SectionPage eyebrow="Contact" title="Contact SAIL" intro="Research, student, and collaboration inquiries are welcome.">
-      <div className="contact-panel">
-        <div><span>Professor</span><p>Jaesin Ahn, Assistant Professor</p></div>
-        <div><span>Email</span><a href="mailto:ajs0420@hanbat.ac.kr">ajs0420@hanbat.ac.kr</a></div>
-        <div>
-          <span>Affiliation</span>
-          <p>
-            <a href="https://hanbat.ac.kr/aisw/" target="_blank" rel="noreferrer">Department of Artificial Intelligence Software</a><br />
-            <a href="https://www.hanbat.ac.kr/" target="_blank" rel="noreferrer">Hanbat National University</a>
-          </p>
+      <div className="contact-layout">
+        <div className="contact-panel">
+          <div><span>Email</span><a href="mailto:ajs0420@hanbat.ac.kr">ajs0420@hanbat.ac.kr</a></div>
+          <div><span>Phone</span><a href="tel:+82448639268">044-863-9268</a></div>
+          <div>
+            <span>Affiliation</span>
+            <p>
+              <a href="https://hanbat.ac.kr/aisw/" target="_blank" rel="noreferrer">Department of Artificial Intelligence Software</a><br />
+              <a href="https://www.hanbat.ac.kr/" target="_blank" rel="noreferrer">Hanbat National University</a>
+            </p>
+          </div>
+          <div>
+            <span>Address</span>
+            <p className="contact-address-lines">
+              <span lang="en">304, Building 8, Sejong Common Campus, 109, Jiphyeonbuk-ro, Sejong, Republic of Korea</span>
+              <span lang="ko">세종특별자치시 집현북로 109, 세종공동캠퍼스 8동 304호</span>
+            </p>
+          </div>
         </div>
-        <div>
-          <span>Address</span>
-          <p>304, Building 8, Sejong Common Campus<br />109, Jiphyeonbuk-ro, Sejong, Republic of Korea</p>
+        <div className="contact-map">
+          <h2>Directions</h2>
+          <iframe
+            title="Sejong Common Campus on Google Maps"
+            src="https://maps.google.com/maps?q=%EC%84%B8%EC%A2%85%EA%B3%B5%EB%8F%99%EC%BA%A0%ED%8D%BC%EC%8A%A4&amp;t=&amp;z=15&amp;ie=UTF8&amp;iwloc=&amp;output=embed"
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            allowFullScreen
+          />
         </div>
-        <div><span>주소</span><p lang="ko">세종특별자치시 집현북로 109<br />세종공동캠퍼스 8동 304호</p></div>
       </div>
     </SectionPage>
   );
