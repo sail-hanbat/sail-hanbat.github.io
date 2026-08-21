@@ -56,7 +56,7 @@ export default function Home() {
 
         <section className="announcement" id="members">
           <div className="container announcement-copy">
-            <h2>People at SAIL</h2>
+            <h2>Join SAIL</h2>
             <p>
               SAIL is recruiting graduate students and undergraduate research
               interns interested in trustworthy AI, generative AI, natural
@@ -65,7 +65,7 @@ export default function Home() {
               not hesitate to contact Prof. Jaesin Ahn at
               ajs0420@hanbat.ac.kr.
             </p>
-            <Link className="arrow" href="/members/professor/">Meet the Lab</Link>
+            <Link className="arrow" href="/contact/">Contact Us</Link>
           </div>
         </section>
       </div>
