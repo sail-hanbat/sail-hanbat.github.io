@@ -6,9 +6,13 @@ export const metadata: Metadata = { title: 'Lectures' };
 export default function LecturesPage() {
   return (
     <SectionPage title="Lectures">
-      <div className="empty-panel">
-        <p>Coursework will be added here.</p>
-      </div>
+      <section>
+        <h2>2026 Fall</h2>
+        <ul>
+          <li>Operating Systems (Undergraduate)</li>
+          <li>Discrete Mathematics (Undergraduate)</li>
+        </ul>
+      </section>
     </SectionPage>
   );
 }
