@@ -8,7 +8,14 @@ export default function ProfessorPage() {
   return (
     <SectionPage title="Professor">
       <div className="profile-layout">
-        <div className="profile-placeholder" role="img" aria-label="Jaesin Ahn photograph placeholder" />
+        <Image
+          className="profile-photo"
+          src="/jaesin-ahn.jpg"
+          alt="Jaesin Ahn"
+          width={354}
+          height={472}
+          priority
+        />
         <div className="profile-summary">
           <h2>Jaesin Ahn</h2>
           <p className="profile-role">Assistant Professor</p>
@@ -40,17 +47,6 @@ export default function ProfessorPage() {
           </div>
         </div>
       </div>
-
-      <section className="professor-section">
-        <h2>Research Interests</h2>
-        <ul className="professor-list">
-          <li>AI Safety</li>
-          <li>Trustworthy AI</li>
-          <li>Generative AI</li>
-          <li>Machine Unlearning</li>
-          <li>Computer Vision</li>
-        </ul>
-      </section>
 
       <section className="professor-section">
         <h2>Education</h2>

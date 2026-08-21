@@ -648,11 +648,10 @@ li {
   align-items: start;
 }
 
-.profile-placeholder {
+.profile-photo {
+  display: block;
   width: 240px;
-  height: 276px;
-  background: #eee;
-  clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+  height: auto;
 }
 
 .profile-role {
