@@ -10,7 +10,7 @@ export function SectionPage({
 }: {
   eyebrow: string;
   title: string;
-  intro: string;
+  intro?: string;
   children?: ReactNode;
 }) {
   return (
@@ -20,12 +20,14 @@ export function SectionPage({
         <div className="container interior-hero-copy">
           <span className="eyebrow">{eyebrow}</span>
           <h1>{title}</h1>
-          <p>{intro}</p>
+          {intro && <p>{intro}</p>}
         </div>
       </section>
-      <section className="interior-content">
-        <div className="container prose-panel">{children}</div>
-      </section>
+      {children && (
+        <section className="interior-content">
+          <div className="container prose-panel">{children}</div>
+        </section>
+      )}
       <SiteFooter />
     </main>
   );

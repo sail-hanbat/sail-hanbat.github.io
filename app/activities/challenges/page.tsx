@@ -8,11 +8,15 @@ export default function ChallengesPage() {
     <SectionPage eyebrow="Activities" title="Challenges" intro="Research competitions and external recognition earned through practical AI problem-solving.">
       <div className="achievement-list">
         <article>
-          <div className="achievement-rank"><strong>7th</strong><span>Top 1.11%</span></div>
+          <div className="achievement-rank"><strong>6th</strong><span>Top 0.95%</span></div>
           <div>
             <time>2025</time>
-            <h2>AI CHAMPION Challenge</h2>
-            <p>Recipient of the IITP President&apos;s Award in the challenge hosted by the Ministry of Science and ICT (MSIT).</p>
+            <h2>
+              <a href="https://www.korea.kr/briefing/pressReleaseView.do?newsId=156725306" target="_blank" rel="noreferrer">
+                AI CHAMPION Challenge
+              </a>
+            </h2>
+            <p>Placed joint sixth among 630 teams and received the IITP President&apos;s Award in the challenge hosted by the Ministry of Science and ICT (MSIT).</p>
           </div>
         </article>
         <article>
