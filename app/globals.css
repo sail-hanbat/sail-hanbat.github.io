@@ -801,11 +801,6 @@ li {
   line-height: 1.4;
 }
 
-.publication-item h2 a {
-  color: #202020;
-  font-weight: 600;
-}
-
 .publication-authors,
 .publication-venue {
   margin-bottom: 5px;

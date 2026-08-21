@@ -4,7 +4,6 @@ type PublicationBase = {
   year: string;
   title: string;
   authors: ReactNode;
-  href?: string;
 };
 
 type JournalPublication = PublicationBase & {
@@ -40,13 +39,7 @@ export function PublicationList({ publications }: { publications: Publication[] 
             <span>{publication.type}</span>
             <time>{publication.year}</time>
           </div>
-          <h2>
-            {publication.href ? (
-              <a href={publication.href} target="_blank" rel="noreferrer">
-                {publication.title}
-              </a>
-            ) : publication.title}
-          </h2>
+          <h2>{publication.title}</h2>
           <p className="publication-authors">{publication.authors}</p>
           <p className="publication-venue">
             <strong>{formatPublicationVenue(publication)}</strong>
