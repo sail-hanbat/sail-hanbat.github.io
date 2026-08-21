@@ -56,6 +56,10 @@ export default function ProfessorPage() {
             Hanbat National University, 2026–Present
           </li>
           <li>
+            <strong>Postdoctoral Researcher</strong>, Kyungpook National University, Daegu,
+            Mar. 2026–Aug. 2026
+          </li>
+          <li>
             <strong>Graduate Research Assistant</strong>, Memorial Sloan Kettering Cancer Center,
             Apr. 2022–Mar. 2023
           </li>
