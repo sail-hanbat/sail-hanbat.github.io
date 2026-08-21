@@ -17,8 +17,8 @@ export default function ResearchPage() {
           <p>Understanding, evaluating, and improving the behavior of learning systems.</p>
           <ul>
             <li>Mechanistic interpretability</li>
-            <li>Machine unlearning, model editing, and intervention</li>
-            <li>Robust, reliable, and accountable AI</li>
+            <li>Machine unlearning and intervention</li>
+            <li>AI privacy and content safety</li>
           </ul>
         </article>
         <article className="research-track">

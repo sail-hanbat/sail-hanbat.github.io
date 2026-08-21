@@ -21,17 +21,18 @@ export default function Home() {
             <div className="overview-copy">
               <h1><span>Safe &amp; Applied</span><br /><span>Intelligence Lab</span></h1>
               <p>
-                SAIL focuses on advancing trustworthy artificial intelligence
-                and developing AI solutions for real-world applications. Our
-                research spans generative AI, natural language processing, and
-                computer vision, including problems such as image enhancement.
-                Our methodological interests include machine unlearning,
-                mechanistic interpretability, model editing, and reliable
-                learning. We aim to understand and improve how AI systems learn
-                and behave while developing effective technologies that can
-                address practical problems across diverse domains. Our research
-                is not limited to these areas, and we continuously explore new
-                and meaningful problems in artificial intelligence.
+                Safe &amp; Applied Intelligence Lab (SAIL) focuses on advancing
+                trustworthy artificial intelligence and developing AI solutions
+                for real-world applications. We explore generative AI (GenAI),
+                natural language processing (NLP), and computer vision (CV),
+                including problems such as image enhancement. Within trustworthy
+                AI, we are particularly interested in machine unlearning,
+                mechanistic interpretability, and privacy-preserving AI. We aim
+                to understand and improve how AI systems learn and behave while
+                developing effective technologies that can address practical
+                problems across diverse domains. Our research is not limited to
+                these areas, and we continuously explore new and meaningful
+                problems in artificial intelligence.
               </p>
             </div>
             <div className="hexagon-wrapper" aria-label="Image placeholders">
