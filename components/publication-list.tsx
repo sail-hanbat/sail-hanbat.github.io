@@ -15,6 +15,7 @@ type JournalPublication = PublicationBase & {
 type ConferencePublication = PublicationBase & {
   type: 'Conference';
   conference: string;
+  yearFirst?: boolean;
   presentation?: 'Findings' | 'Oral' | 'Spotlight' | 'Special Track' | 'Workshop';
 };
 
@@ -39,8 +40,10 @@ export function PublicationList({ publications }: { publications: Publication[] 
           <p className="publication-authors">{publication.authors}</p>
           <p className="publication-venue">
             {publication.type === 'Journal'
-              ? publication.journal
-              : `${publication.conference} ${publication.year}${publication.presentation ? ` · ${publication.presentation}` : ''}`}
+              ? <strong>{publication.journal}</strong>
+              : publication.yearFirst
+                ? <>{publication.year} <strong>{publication.conference}</strong>{publication.presentation && ` · ${publication.presentation}`}</>
+                : <><strong>{publication.conference}</strong> {publication.year}{publication.presentation && ` · ${publication.presentation}`}</>}
           </p>
         </li>
       ))}
