@@ -18,7 +18,8 @@ export default function ResearchPage() {
           <ul>
             <li>Mechanistic interpretability and backdoor analysis</li>
             <li>Machine unlearning and privacy risk mitigation</li>
-            <li>Content safety for generative models</li>
+            <li>Content safety for generative models, including NSFW content and copyright</li>
+            <li>Hallucination detection and mitigation</li>
           </ul>
         </article>
         <article className="research-track">
@@ -26,9 +27,8 @@ export default function ResearchPage() {
           <h2>Generative AI &amp; NLP</h2>
           <p>Developing and evaluating language and generative models for reliable use.</p>
           <ul>
-            <li>Large language and multimodal models</li>
-            <li>Text-to-image diffusion models</li>
-            <li>Efficient domain-specialized models</li>
+            <li>Large language models (LLMs), vision-language models (VLMs), and vision-language-action models (VLAs)</li>
+            <li>Diffusion models</li>
           </ul>
         </article>
         <article className="research-track">
@@ -37,7 +37,7 @@ export default function ResearchPage() {
           <p>Translating AI methods into effective systems for real operating environments.</p>
           <ul>
             <li>Clinical and medical imaging AI</li>
-            <li>Remote sensing and environmental analysis</li>
+            <li>Wafer image enhancement and defect detection</li>
             <li>Reliable multi-agent and routed AI systems</li>
           </ul>
         </article>
