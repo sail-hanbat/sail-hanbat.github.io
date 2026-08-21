@@ -55,28 +55,17 @@ export default function Home() {
         </section>
 
         <section className="announcement" id="members">
-          <div className="container announcement-grid">
-            <div className="announcement-copy">
-              <h2>People at SAIL</h2>
-              <p>
-                SAIL is led by <strong>Prof. Jaesin Ahn</strong>. We welcome
-                students interested in trustworthy AI, advanced learning
-                methods, and practical AI systems for real-world domains.
-              </p>
-              <Link className="arrow" href="/members/professor/">Meet the Lab</Link>
-            </div>
-            <div className="faculty-grid">
-              <article className="faculty-item">
-                <div className="faculty-photo-placeholder" role="img" aria-label="Professor photograph placeholder" />
-                <span className="faculty-name">Professor</span>
-                <span className="faculty-field">Jaesin Ahn</span>
-              </article>
-              <article className="faculty-item">
-                <div className="faculty-photo-placeholder" role="img" aria-label="Student photograph placeholder" />
-                <span className="faculty-name">Students</span>
-                <span className="faculty-field">Future SAIL members</span>
-              </article>
-            </div>
+          <div className="container announcement-copy">
+            <h2>People at SAIL</h2>
+            <p>
+              SAIL is recruiting graduate students and undergraduate research
+              interns interested in trustworthy AI, generative AI, natural
+              language processing, computer vision, and real-world AI
+              applications. If you are interested in joining SAIL, please do
+              not hesitate to contact Prof. Jaesin Ahn at
+              ajs0420@hanbat.ac.kr.
+            </p>
+            <Link className="arrow" href="/members/professor/">Meet the Lab</Link>
           </div>
         </section>
       </div>

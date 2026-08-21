@@ -523,7 +523,6 @@ li {
 .announcement {
   position: relative;
   overflow: hidden;
-  min-height: 632px;
   background-color: var(--sail-purple);
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='185' viewBox='0 0 160 185'%3E%3Cpath fill='%23fff' fill-opacity='.035' d='M80 0l80 46.25v92.5L80 185 0 138.75v-92.5z'/%3E%3C/svg%3E");
   background-position: 50% 50%;
@@ -532,12 +531,9 @@ li {
   padding: 120px 0 129px;
 }
 
-.announcement-grid {
+.announcement-copy {
   position: relative;
   z-index: 2;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 50px;
 }
 
 .announcement-copy h2 {
@@ -552,39 +548,6 @@ li {
   display: inline-block;
   margin-top: 10px;
   color: #fff;
-}
-
-.faculty-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 30px;
-}
-
-.faculty-item {
-  text-align: center;
-}
-
-.faculty-photo-placeholder {
-  width: 200px;
-  height: 230px;
-  margin: 0 auto;
-  border: 7px solid #fff;
-  background: #eee;
-  clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
-}
-
-.faculty-name {
-  display: block;
-  margin-top: 10px;
-  font-size: 20px;
-  font-weight: 500;
-}
-
-.faculty-field {
-  display: block;
-  width: 80%;
-  margin: 8px auto 0;
-  font-size: 14px;
 }
 
 /* Interior pages */
@@ -1560,10 +1523,6 @@ li {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .announcement-grid {
-    grid-template-columns: 1fr;
-  }
-
   .admin-layout {
     grid-template-columns: 1fr;
   }
@@ -1709,8 +1668,6 @@ li {
     min-height: 0;
   }
 
-  .announcement-grid,
-  .faculty-grid,
   .research-track-grid,
   .profile-layout,
   .interest-grid,
@@ -1774,14 +1731,6 @@ li {
   .admin-panel-heading {
     align-items: flex-start;
     flex-direction: column;
-  }
-
-  .announcement-grid {
-    gap: 50px;
-  }
-
-  .faculty-grid {
-    gap: 40px;
   }
 
   .announcement-copy p {
