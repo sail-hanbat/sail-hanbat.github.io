@@ -12,6 +12,41 @@ const publications: Publication[] = [
     authors: <><strong>Jaesin Ahn</strong>, Junhyun Bae, Jekyung Lee, and Heechul Jung</>,
     journal: '전자공학회논문지',
   },
+  {
+    year: '2025',
+    type: 'Conference',
+    title: '안전한 디퓨전 모델을 위한 하이브리드 적대적 공격 방어 기법',
+    authors: <><strong>안재신</strong>, 정희철</>,
+    conference: 'IEIE',
+  },
+  {
+    year: '2024',
+    type: 'Conference',
+    title: 'LLM에서 개인정보 유출 위험성 분석 및 가명처리의 효과 연구',
+    authors: <><strong>안재신</strong>, 정희철</>,
+    conference: 'KICS',
+  },
+  {
+    year: '2024',
+    type: 'Conference',
+    title: 'Diffusion 모델에서의 효율적인 파라미터 튜닝을 위한 기법 비교',
+    authors: <>김은지, <strong>안재신</strong>, 정희철</>,
+    conference: 'KICS',
+  },
+  {
+    year: '2024',
+    type: 'Conference',
+    title: 'Dual Domain-aware Attention-based MRI Off-Resonance Correction with Selective Perceptual Loss and Test-time Translation-Merger',
+    authors: <><strong>Jaesin Ahn</strong>, Heechul Jung</>,
+    conference: 'KSIAM',
+  },
+  {
+    year: '2021',
+    type: 'Conference',
+    title: 'SLIT: Shared Layers for Image Transformer',
+    authors: <><strong>Jaesin Ahn</strong>, Heechul Jung</>,
+    conference: 'KAIA',
+  },
 ];
 
 export default function DomesticPublicationsPage() {
