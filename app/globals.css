@@ -674,6 +674,33 @@ li {
   display: inline-block;
 }
 
+.profile-social-links {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.profile-social-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  opacity: 0.88;
+  transition: opacity 160ms ease;
+}
+
+.profile-social-links a:hover,
+.profile-social-links a:focus-visible {
+  opacity: 1;
+}
+
+.profile-social-links a:focus-visible {
+  outline: 2px solid rgba(140, 21, 21, 0.25);
+  outline-offset: 4px;
+}
+
 .professor-section {
   margin-top: 64px;
 }

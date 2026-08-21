@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import { SectionPage } from '@/components/section-page';
 
 export const metadata: Metadata = { title: 'Professor' };
@@ -19,6 +20,24 @@ export default function ProfessorPage() {
           <a className="profile-email" href="mailto:ajs0420@hanbat.ac.kr">
             ajs0420@hanbat.ac.kr
           </a>
+          <div className="profile-social-links" aria-label="Professional profiles">
+            <a
+              href="https://www.linkedin.com/in/jaesin-ahn-a23a3614b/"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="LinkedIn profile"
+            >
+              <Image src="/icons/linkedin.svg" alt="" width={24} height={24} />
+            </a>
+            <a
+              href="https://scholar.google.co.kr/citations?user=CY9LCBsAAAAJ&amp;hl=ko"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Google Scholar profile"
+            >
+              <Image src="/icons/google-scholar.svg" alt="" width={24} height={24} />
+            </a>
+          </div>
         </div>
       </div>
 
