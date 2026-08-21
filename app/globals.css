@@ -715,7 +715,6 @@ li {
   text-transform: uppercase;
 }
 
-.content-section > h2,
 .student-opening > h2 {
   margin-bottom: 25px;
   font-size: 30px;
@@ -750,79 +749,6 @@ li {
 .research-track ul {
   margin: 20px 0 0;
   padding-left: 20px;
-}
-
-.content-section {
-  margin-top: 100px;
-}
-
-.project-list {
-  border-top: 1px solid #cfcfcf;
-}
-
-.project-list article {
-  display: grid;
-  grid-template-columns: 210px minmax(250px, 0.9fr) minmax(300px, 1.35fr);
-  gap: 30px;
-  align-items: start;
-  border-bottom: 1px solid #cfcfcf;
-  padding: 28px 0;
-}
-
-.project-list article > div {
-  display: grid;
-  gap: 4px;
-}
-
-.project-list time {
-  color: var(--sail-red);
-  font-size: 13px;
-  font-weight: 600;
-}
-
-.project-list article > div span {
-  color: #666;
-  font-size: 12px;
-  line-height: 1.5;
-}
-
-.project-list h3 {
-  margin: 0;
-  font-size: 18px;
-  line-height: 1.45;
-}
-
-.project-list p {
-  margin: 0;
-  font-size: 14px;
-  line-height: 1.65;
-}
-
-.patent-list {
-  margin: 0;
-  border-top: 1px solid #d4d4d4;
-  list-style: none;
-  padding: 0;
-}
-
-.patent-list li {
-  display: grid;
-  grid-template-columns: 245px 1fr;
-  gap: 25px;
-  border-bottom: 1px solid #d4d4d4;
-  padding: 18px 0;
-}
-
-.patent-list span {
-  color: #666;
-  font-size: 12px;
-}
-
-.patent-list strong {
-  color: #282828;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 1.5;
 }
 
 /* Publication records */
@@ -1602,13 +1528,6 @@ li {
     grid-template-columns: 1fr;
   }
 
-  .project-list article {
-    grid-template-columns: 160px 1fr;
-  }
-
-  .project-list article > p {
-    grid-column: 2;
-  }
 }
 
 @media (max-width: 767px) {
@@ -1762,15 +1681,9 @@ li {
     grid-template-columns: 1fr;
   }
 
-  .project-list article,
-  .patent-list li,
   .achievement-list article {
     grid-template-columns: 1fr;
     gap: 12px;
-  }
-
-  .project-list article > p {
-    grid-column: auto;
   }
 
   .publication-item {
