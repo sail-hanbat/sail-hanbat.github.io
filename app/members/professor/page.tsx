@@ -5,7 +5,7 @@ export const metadata: Metadata = { title: 'Professor' };
 
 export default function ProfessorPage() {
   return (
-    <SectionPage eyebrow="Members" title="Professor">
+    <SectionPage title="Professor">
       <div className="profile-layout">
         <div className="profile-placeholder" role="img" aria-label="Jaesin Ahn photograph placeholder" />
         <div className="profile-summary">

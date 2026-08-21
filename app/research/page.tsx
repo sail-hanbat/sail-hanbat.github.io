@@ -6,13 +6,11 @@ export const metadata: Metadata = { title: 'Research' };
 export default function ResearchPage() {
   return (
     <SectionPage
-      eyebrow="Research"
-      title="Research Interests"
+      title="Research"
       intro="SAIL advances trustworthy artificial intelligence and develops effective AI technologies for real-world applications."
     >
       <div className="research-track-grid research-track-grid-four">
         <article className="research-track">
-          <span>Research Area</span>
           <h2>Trustworthy AI</h2>
           <p>Understanding and controlling how modern AI systems learn and behave.</p>
           <ul>
@@ -23,7 +21,6 @@ export default function ResearchPage() {
           </ul>
         </article>
         <article className="research-track">
-          <span>Research Area</span>
           <h2>Generative AI &amp; NLP</h2>
           <p>Developing and evaluating language and generative models for reliable use.</p>
           <ul>
@@ -32,7 +29,6 @@ export default function ResearchPage() {
           </ul>
         </article>
         <article className="research-track">
-          <span>Research Area</span>
           <h2>Applied AI</h2>
           <p>Translating AI methods into effective systems for real operating environments.</p>
           <ul>
@@ -42,7 +38,6 @@ export default function ResearchPage() {
           </ul>
         </article>
         <article className="research-track">
-          <span>Research Area</span>
           <h2>Computer Vision</h2>
           <p>Advancing visual models from image understanding to image reconstruction.</p>
           <ul>

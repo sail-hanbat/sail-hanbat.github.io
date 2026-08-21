@@ -15,7 +15,6 @@ export default function NewsPage() {
       <SiteHeader />
       <section className="interior-hero compact-interior-hero">
         <div className="container interior-hero-copy">
-          <span className="eyebrow">Activities</span>
           <h1>News</h1>
           <p>Research, publication, and laboratory updates from SAIL.</p>
           <Link className="admin-button primary news-action-button" href="/activities/news/admin/?action=new">

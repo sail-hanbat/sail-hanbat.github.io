@@ -56,7 +56,7 @@ const publications: Publication[] = [
 
 export default function DomesticPublicationsPage() {
   return (
-    <SectionPage eyebrow="Publications" title="Domestic" intro="Peer-reviewed domestic publications.">
+    <SectionPage title="Domestic Publications" intro="Peer-reviewed domestic publications.">
       <PublicationList publications={publications} />
     </SectionPage>
   );

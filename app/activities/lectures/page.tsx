@@ -5,7 +5,7 @@ export const metadata: Metadata = { title: 'Lectures' };
 
 export default function LecturesPage() {
   return (
-    <SectionPage eyebrow="Activities" title="Lectures">
+    <SectionPage title="Lectures">
       <div className="empty-panel">
         <p>Coursework will be added here.</p>
       </div>

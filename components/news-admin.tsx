@@ -419,7 +419,6 @@ export function NewsAdmin() {
           <form className="admin-panel admin-editor" onSubmit={savePost}>
             <div className="admin-panel-heading">
               <div>
-                <span className="eyebrow">News editor</span>
                 <h2>{editor.id ? 'Edit post' : 'New post'}</h2>
               </div>
               {editor.id && (
@@ -466,7 +465,6 @@ export function NewsAdmin() {
           <aside className="admin-panel admin-posts">
             <div className="admin-panel-heading">
               <div>
-                <span className="eyebrow">All news</span>
                 <h2>{posts.length} {posts.length === 1 ? 'post' : 'posts'}</h2>
               </div>
             </div>
@@ -493,7 +491,6 @@ export function NewsAdmin() {
           <section className="admin-panel admin-manager">
             <div className="admin-panel-heading">
               <div>
-                <span className="eyebrow">Owner controls</span>
                 <h2>Administrators</h2>
               </div>
             </div>

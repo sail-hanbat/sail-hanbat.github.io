@@ -6,7 +6,6 @@ export const metadata: Metadata = { title: 'Students' };
 export default function StudentsPage() {
   return (
     <SectionPage
-      eyebrow="Members"
       title="Students"
       intro="Students and research collaborators at SAIL."
     >

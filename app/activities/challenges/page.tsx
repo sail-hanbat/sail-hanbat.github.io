@@ -5,7 +5,7 @@ export const metadata: Metadata = { title: 'Challenges' };
 
 export default function ChallengesPage() {
   return (
-    <SectionPage eyebrow="Activities" title="Challenges" intro="Research competitions and external recognition earned through practical AI problem-solving.">
+    <SectionPage title="Challenges" intro="Research competitions and external recognition earned through practical AI problem-solving.">
       <div className="achievement-list">
         <article>
           <div className="achievement-rank"><strong>6th</strong><span>Top 0.95%</span></div>

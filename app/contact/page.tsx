@@ -5,7 +5,7 @@ export const metadata: Metadata = { title: 'Contact' };
 
 export default function ContactPage() {
   return (
-    <SectionPage eyebrow="Contact" title="Contact SAIL" intro="Research, student, and collaboration inquiries are welcome.">
+    <SectionPage title="Contact" intro="Research, student, and collaboration inquiries are welcome.">
       <div className="contact-layout">
         <div className="contact-panel">
           <div><span>Email</span><p>ajs0420@hanbat.ac.kr</p></div>

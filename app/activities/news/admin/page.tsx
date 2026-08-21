@@ -16,7 +16,6 @@ export default function NewsAdminPage() {
       <SiteHeader />
       <section className="interior-hero compact-interior-hero admin-hero">
         <div className="container interior-hero-copy">
-          <span className="eyebrow">SAIL Administration</span>
           <h1>News</h1>
           <p>Publish and manage laboratory news.</p>
         </div>
