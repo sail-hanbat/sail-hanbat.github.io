@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 
 const dropdowns = [
@@ -31,15 +32,14 @@ export function SiteHeader({ overlay = false }: { overlay?: boolean }) {
       <div className="navbar">
         <div className="container nav-container">
           <Link className="wordmark" href="/" aria-label="SAIL home">
-            <span className="wordmark-symbol" aria-hidden="true">
-              <i />
-              <i />
-              <i />
-            </span>
-            <span className="wordmark-copy">
-              <strong>SAIL</strong>
-              <small>Safe &amp; Applied<br />Intelligence Lab</small>
-            </span>
+            <Image
+              className="wordmark-image"
+              src="/brand/04-lockup-fullname-2line-transparent.png"
+              alt=""
+              width={1248}
+              height={456}
+              loading="eager"
+            />
           </Link>
 
           <nav className="desktop-nav" aria-label="Primary navigation">

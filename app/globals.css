@@ -133,67 +133,14 @@ li {
   height: 98px;
   flex: 0 0 235px;
   align-items: center;
-  gap: 8px;
   text-decoration: none !important;
 }
 
-.wordmark-symbol {
-  position: relative;
+.wordmark-image {
   display: block;
-  width: 72px;
-  height: 88px;
-  flex: 0 0 72px;
-}
-
-.wordmark-symbol i {
-  position: absolute;
-  display: block;
-  width: 48px;
-  height: 15px;
-}
-
-.wordmark-symbol i:nth-child(1) {
-  top: 19px;
-  left: 7px;
-  background: var(--sail-red);
-  transform: skewX(-30deg);
-}
-
-.wordmark-symbol i:nth-child(2) {
-  top: 36px;
-  left: 17px;
-  background: #555;
-  transform: skewX(30deg);
-}
-
-.wordmark-symbol i:nth-child(3) {
-  top: 53px;
-  right: 17px;
-  background: var(--sail-red);
-  transform: skewX(-30deg);
-}
-
-.wordmark-copy {
-  display: flex;
-  flex-direction: column;
-  color: #000;
-  line-height: 1;
-}
-
-.wordmark-copy strong {
-  color: var(--sail-red);
-  font-size: 24px;
-  font-weight: 700;
-  letter-spacing: -0.03em;
-}
-
-.wordmark-copy small {
-  margin-top: 3px;
-  font-size: 8px;
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  line-height: 1.2;
-  text-transform: uppercase;
+  width: 156px;
+  height: auto;
+  flex: 0 0 auto;
 }
 
 .desktop-nav {
@@ -1551,20 +1498,8 @@ li {
     flex-basis: 205px;
   }
 
-  .wordmark-symbol {
-    width: 56px;
-    height: 78px;
-    flex-basis: 56px;
-    transform: scale(0.78);
-    transform-origin: left center;
-  }
-
-  .wordmark-copy strong {
-    font-size: 21px;
-  }
-
-  .wordmark-copy small {
-    font-size: 7px;
+  .wordmark-image {
+    width: 126px;
   }
 
   .overview {

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1064" height="456" viewBox="-1.33 20 133 57" role="img" aria-labelledby="title">
+  <title id="title">SAIL icon and acronym</title>
+  <style>@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&amp;display=swap');</style>
+  <g transform="translate(0 5)">
+    <path fill="#891515" d="M11.33 19h48L50.67 34h-48z"/>
+    <path fill="#555555" d="M12.67 36h48l8.66 15h-48z"/>
+    <path fill="#891515" d="M11.33 53h48L50.67 68h-48z"/>
+  </g>
+  <text x="80" y="56" fill="#891515" font-family="Poppins,Arial,sans-serif" font-size="24" font-weight="700" letter-spacing="-.72">SAIL</text>
+</svg>
