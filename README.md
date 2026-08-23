@@ -32,10 +32,12 @@ Page content is stored in `public.site_pages`, uploaded images in the public
 public reads while restricting writes to emails in `public.site_admins`.
 Database changes are recorded under `supabase/migrations/`.
 
-The UI depends only on the `ContentRepository` interface in
-`lib/content-repository.ts`. To move from Supabase to a NAS or another server,
-implement that interface against the new service and replace the exported
-repository; page components and inline editing controls do not need to change.
+The UI depends on the `ContentRepository` interface in
+`lib/content-repository.ts` and the `NewsRepository` interface in
+`lib/news-repository.ts`. To move from Supabase to a NAS or another server,
+implement those interfaces against the new service and replace the exported
+repositories; page components and inline editing controls do not need to
+change.
 
 ## Design note
 

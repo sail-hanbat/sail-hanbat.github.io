@@ -5,6 +5,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import type { Session } from '@supabase/supabase-js';
 import { formatNewsDate, type NewsRow } from '@/lib/news';
+import { newsRepository } from '@/lib/news-repository';
 import { supabase } from '@/lib/supabase';
 
 type AdminRole = 'owner' | 'admin';
@@ -86,16 +87,11 @@ export function NewsAdmin() {
   };
 
   const loadPosts = useCallback(async () => {
-    const { data, error: queryError } = await supabase
-      .from('news_posts')
-      .select('id, slug, title, body, published, published_at, created_at, updated_at')
-      .order('published_at', { ascending: false });
-
-    if (queryError) {
-      setError(queryError.message);
-      return;
+    try {
+      setPosts(await newsRepository.listPosts({ includeUnpublished: true }));
+    } catch (queryError) {
+      setError(queryError instanceof Error ? queryError.message : 'News could not be loaded.');
     }
-    setPosts((data ?? []) as NewsRow[]);
   }, []);
 
   const loadAdmins = useCallback(async () => {
@@ -153,13 +149,9 @@ export function NewsAdmin() {
       void Promise.all([loadPosts(), loadAdmins()]);
     }, 0);
 
-    const channel = supabase
-      .channel('news-admin-dashboard')
-      .on(
-        'postgres_changes',
-        { event: '*', schema: 'public', table: 'news_posts' },
-        () => void loadPosts(),
-      )
+    const unsubscribeNews = newsRepository.subscribe(() => void loadPosts(), 'news-admin-posts');
+    const adminChannel = supabase
+      .channel('news-admin-list')
       .on(
         'postgres_changes',
         { event: '*', schema: 'public', table: 'site_admins' },
@@ -169,7 +161,8 @@ export function NewsAdmin() {
 
     return () => {
       window.clearTimeout(loadTimer);
-      void supabase.removeChannel(channel);
+      unsubscribeNews();
+      void supabase.removeChannel(adminChannel);
     };
   }, [loadAdmins, loadPosts, profile]);
 
@@ -261,17 +254,13 @@ export function NewsAdmin() {
       published_at: new Date(`${editor.publishedAt}T12:00:00Z`).toISOString(),
     };
 
-    const operation = editor.id
-      ? supabase.from('news_posts').update(payload).eq('id', editor.id)
-      : supabase.from('news_posts').insert(payload);
-    const { error: saveError } = await operation;
-
-    if (saveError) {
-      setError(saveError.message);
-    } else {
+    try {
+      await newsRepository.savePost(payload, editor.id ?? undefined);
       setMessage(editor.id ? 'News post updated.' : 'News post published.');
       setEditor(emptyEditor());
       await loadPosts();
+    } catch (saveError) {
+      setError(saveError instanceof Error ? saveError.message : 'News could not be saved.');
     }
     setBusy(false);
   }
@@ -280,12 +269,13 @@ export function NewsAdmin() {
     if (!window.confirm(`Delete “${post.title}”? This cannot be undone.`)) return;
     clearNotice();
     setBusy(true);
-    const { error: deleteError } = await supabase.from('news_posts').delete().eq('id', post.id);
-    if (deleteError) setError(deleteError.message);
-    else {
+    try {
+      await newsRepository.deletePost(post.id);
       if (editor.id === post.id) setEditor(emptyEditor());
       setMessage('News post deleted.');
       await loadPosts();
+    } catch (deleteError) {
+      setError(deleteError instanceof Error ? deleteError.message : 'News could not be deleted.');
     }
     setBusy(false);
   }

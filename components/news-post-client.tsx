@@ -6,8 +6,8 @@ import type { KeyboardEvent } from 'react';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useCmsAdmin } from '@/components/cms/cms-admin-provider';
 import { NewsBody } from '@/components/news-body';
-import { formatNewsDate, newsRowToPost, type NewsPost, type NewsRow } from '@/lib/news';
-import { supabase } from '@/lib/supabase';
+import { formatNewsDate, newsRowToPost, type NewsPost } from '@/lib/news';
+import { newsRepository } from '@/lib/news-repository';
 
 type NewsDraft = {
   id?: string;
@@ -107,14 +107,8 @@ export function NewsPostClient() {
       return;
     }
 
-    const { data, error } = await supabase
-      .from('news_posts')
-      .select('id, slug, title, body, published, published_at, created_at, updated_at')
-      .eq('slug', slug)
-      .eq('published', true)
-      .maybeSingle();
-
-    const nextPost = !error && data ? newsRowToPost(data as NewsRow) : null;
+    const data = await newsRepository.getPostBySlug(slug).catch(() => null);
+    const nextPost = data ? newsRowToPost(data) : null;
     setPost(nextPost);
     setDraft(nextPost ? toDraft(nextPost) : null);
     setSavedDraft(nextPost ? toDraft(nextPost) : null);
@@ -123,20 +117,13 @@ export function NewsPostClient() {
 
   useEffect(() => {
     const loadTimer = window.setTimeout(() => void loadPost(), 0);
-    const channel = supabase
-      .channel(`news-post-${slug || (isNew ? 'new' : 'missing')}`)
-      .on(
-        'postgres_changes',
-        { event: '*', schema: 'public', table: 'news_posts' },
-        () => {
-          if (!editMode) void loadPost();
-        },
-      )
-      .subscribe();
+    const unsubscribe = newsRepository.subscribe(() => {
+      if (!editMode) void loadPost();
+    }, `news-post-${slug || (isNew ? 'new' : 'missing')}`);
 
     return () => {
       window.clearTimeout(loadTimer);
-      void supabase.removeChannel(channel);
+      unsubscribe();
     };
   }, [editMode, isNew, loadPost, slug]);
 
@@ -168,15 +155,8 @@ export function NewsPostClient() {
       published_at: new Date(`${current.date}T12:00:00Z`).toISOString(),
     };
 
-    const operation = current.id
-      ? supabase.from('news_posts').update(payload).eq('id', current.id)
-      : supabase.from('news_posts').insert(payload);
-    const { data, error } = await operation
-      .select('id, slug, title, body, published, published_at, created_at, updated_at')
-      .single();
-
-    if (error) throw error;
-    const nextPost = newsRowToPost(data as NewsRow);
+    const data = await newsRepository.savePost(payload, current.id);
+    const nextPost = newsRowToPost(data);
     const nextDraft = toDraft(nextPost);
     setPost(nextPost);
     setDraft(nextDraft);

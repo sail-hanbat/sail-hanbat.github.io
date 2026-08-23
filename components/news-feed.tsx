@@ -8,9 +8,8 @@ import {
   getCachedNews,
   newsRowToPost,
   type NewsPost,
-  type NewsRow,
 } from '@/lib/news';
-import { publicSupabase } from '@/lib/supabase';
+import { newsRepository } from '@/lib/news-repository';
 
 export function NewsFeed({ limit }: { limit?: number }) {
   const [posts, setPosts] = useState<NewsPost[]>(
@@ -19,21 +18,16 @@ export function NewsFeed({ limit }: { limit?: number }) {
   const [loaded, setLoaded] = useState(false);
 
   const loadPosts = useCallback(async () => {
-    let query = publicSupabase
-      .from('news_posts')
-      .select('id, slug, title, body, published, published_at')
-      .eq('published', true)
-      .order('published_at', { ascending: false });
-
-    if (limit) query = query.limit(limit);
-
-    const { data, error } = await query;
-    if (!error && data) {
-      const nextPosts = (data as NewsRow[]).map(newsRowToPost);
-      setPosts(nextPosts);
-      cacheNews(nextPosts, limit);
+    try {
+      const data = await newsRepository.listPosts({ limit });
+      if (data) {
+        const nextPosts = data.map(newsRowToPost);
+        setPosts(nextPosts);
+        cacheNews(nextPosts, limit);
+      }
+    } finally {
+      setLoaded(true);
     }
-    setLoaded(true);
   }, [limit]);
 
   useEffect(() => {
@@ -42,18 +36,11 @@ export function NewsFeed({ limit }: { limit?: number }) {
       if (cachedPosts) setPosts(cachedPosts);
       void loadPosts();
     }, 0);
-    const channel = publicSupabase
-      .channel(`public-news-${limit ?? 'all'}`)
-      .on(
-        'postgres_changes',
-        { event: '*', schema: 'public', table: 'news_posts' },
-        () => void loadPosts(),
-      )
-      .subscribe();
+    const unsubscribe = newsRepository.subscribe(() => void loadPosts(), `public-news-${limit ?? 'all'}`);
 
     return () => {
       window.clearTimeout(loadTimer);
-      void publicSupabase.removeChannel(channel);
+      unsubscribe();
     };
   }, [limit, loadPosts]);
 
