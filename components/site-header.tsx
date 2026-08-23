@@ -1,27 +1,29 @@
-import Image from 'next/image';
+'use client';
+
 import Link from 'next/link';
+import { EditableImage, EditableText } from '@/components/cms/editable';
 
 const dropdowns = [
   {
-    label: 'Members',
+    labelPath: 'nav.members',
     items: [
-      { label: 'Professor', href: '/members/professor/' },
-      { label: 'Students', href: '/members/students/' },
+      { labelPath: 'nav.professor', href: '/members/professor/' },
+      { labelPath: 'nav.students', href: '/members/students/' },
     ],
   },
   {
-    label: 'Publications',
+    labelPath: 'nav.publications',
     items: [
-      { label: 'International', href: '/publications/international/' },
-      { label: 'Domestic', href: '/publications/domestic/' },
+      { labelPath: 'nav.international', href: '/publications/international/' },
+      { labelPath: 'nav.domestic', href: '/publications/domestic/' },
     ],
   },
   {
-    label: 'Activities',
+    labelPath: 'nav.activities',
     items: [
-      { label: 'Challenges', href: '/activities/challenges/' },
-      { label: 'Lectures', href: '/activities/lectures/' },
-      { label: 'News', href: '/activities/news/' },
+      { labelPath: 'nav.challenges', href: '/activities/challenges/' },
+      { labelPath: 'nav.lectures', href: '/activities/lectures/' },
+      { labelPath: 'nav.news', href: '/activities/news/' },
     ],
   },
 ];
@@ -32,50 +34,43 @@ export function SiteHeader({ overlay = false }: { overlay?: boolean }) {
       <div className="navbar">
         <div className="container nav-container">
           <Link className="wordmark" href="/" aria-label="SAIL home">
-            <Image
-              className="wordmark-image"
-              src="/brand/04-lockup-fullname-2line-transparent.png"
-              alt=""
-              width={1248}
-              height={456}
-              loading="eager"
-            />
+            <EditableImage path="logoPath" alt="" className="wordmark-image" wrapperClassName="wordmark-image-shell" />
           </Link>
 
           <nav className="desktop-nav" aria-label="Primary navigation">
-            <Link href="/">Home</Link>
+            <Link href="/"><EditableText path="nav.home" /></Link>
             <div className="nav-item nav-dropdown">
               <button className="nav-trigger" type="button" aria-haspopup="true">
-                Members
+                <EditableText path={dropdowns[0].labelPath} />
               </button>
               <div className="dropdown-menu">
                 {dropdowns[0].items.map((item) => (
-                  <Link href={item.href} key={item.href}>{item.label}</Link>
+                  <Link href={item.href} key={item.href}><EditableText path={item.labelPath} /></Link>
                 ))}
               </div>
             </div>
-            <Link href="/research/">Research</Link>
+            <Link href="/research/"><EditableText path="nav.research" /></Link>
             <div className="nav-item nav-dropdown">
               <button className="nav-trigger" type="button" aria-haspopup="true">
-                Publications
+                <EditableText path={dropdowns[1].labelPath} />
               </button>
               <div className="dropdown-menu">
                 {dropdowns[1].items.map((item) => (
-                  <Link href={item.href} key={item.href}>{item.label}</Link>
+                  <Link href={item.href} key={item.href}><EditableText path={item.labelPath} /></Link>
                 ))}
               </div>
             </div>
             <div className="nav-item nav-dropdown">
               <button className="nav-trigger" type="button" aria-haspopup="true">
-                Activities
+                <EditableText path={dropdowns[2].labelPath} />
               </button>
               <div className="dropdown-menu">
                 {dropdowns[2].items.map((item) => (
-                  <Link href={item.href} key={item.href}>{item.label}</Link>
+                  <Link href={item.href} key={item.href}><EditableText path={item.labelPath} /></Link>
                 ))}
               </div>
             </div>
-            <Link href="/contact/">Contact</Link>
+            <Link href="/contact/"><EditableText path="nav.contact" /></Link>
           </nav>
 
           <details className="mobile-nav">
@@ -85,21 +80,21 @@ export function SiteHeader({ overlay = false }: { overlay?: boolean }) {
               <span />
             </summary>
             <nav aria-label="Mobile navigation">
-              <Link href="/">Home</Link>
+              <Link href="/"><EditableText path="nav.home" /></Link>
               <details className="mobile-subnav">
-                <summary>Members</summary>
-                <div>{dropdowns[0].items.map((item) => <Link href={item.href} key={item.href}>{item.label}</Link>)}</div>
+                <summary><EditableText path={dropdowns[0].labelPath} /></summary>
+                <div>{dropdowns[0].items.map((item) => <Link href={item.href} key={item.href}><EditableText path={item.labelPath} /></Link>)}</div>
               </details>
-              <Link href="/research/">Research</Link>
+              <Link href="/research/"><EditableText path="nav.research" /></Link>
               <details className="mobile-subnav">
-                <summary>Publications</summary>
-                <div>{dropdowns[1].items.map((item) => <Link href={item.href} key={item.href}>{item.label}</Link>)}</div>
+                <summary><EditableText path={dropdowns[1].labelPath} /></summary>
+                <div>{dropdowns[1].items.map((item) => <Link href={item.href} key={item.href}><EditableText path={item.labelPath} /></Link>)}</div>
               </details>
               <details className="mobile-subnav">
-                <summary>Activities</summary>
-                <div>{dropdowns[2].items.map((item) => <Link href={item.href} key={item.href}>{item.label}</Link>)}</div>
+                <summary><EditableText path={dropdowns[2].labelPath} /></summary>
+                <div>{dropdowns[2].items.map((item) => <Link href={item.href} key={item.href}><EditableText path={item.labelPath} /></Link>)}</div>
               </details>
-              <Link href="/contact/">Contact</Link>
+              <Link href="/contact/"><EditableText path="nav.contact" /></Link>
             </nav>
           </details>
         </div>

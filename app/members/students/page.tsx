@@ -1,18 +1,11 @@
 import type { Metadata } from 'next';
-import { SectionPage } from '@/components/section-page';
+import { StudentsContentView } from '@/components/content/students-content';
+import { getBuildPageContent } from '@/lib/content-repository';
+import { DEFAULT_STUDENTS_CONTENT, type StudentsContent } from '@/lib/site-content';
 
 export const metadata: Metadata = { title: 'Students' };
 
-export default function StudentsPage() {
-  return (
-    <SectionPage
-      title="Students"
-      intro="Students and research collaborators at SAIL."
-    >
-      <div className="empty-panel">
-        <h2>Future SAIL Members</h2>
-        <p>Student profiles and research interests will be added here.</p>
-      </div>
-    </SectionPage>
-  );
+export default async function StudentsPage() {
+  const content = await getBuildPageContent<StudentsContent>('students', DEFAULT_STUDENTS_CONTENT);
+  return <StudentsContentView initialContent={content} />;
 }

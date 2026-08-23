@@ -1,16 +1,20 @@
+'use client';
+
+import { EditableText } from '@/components/cms/editable';
+
 export function SiteFooter() {
   return (
     <footer className="global-footer" id="contact">
       <div className="container footer-grid">
         <div className="footer-logo" aria-label="SAIL">
-          <strong>SAIL</strong>
-          <span>Safe &amp; Applied Intelligence Lab</span>
+          <EditableText as="strong" path="footer.acronym" />
+          <EditableText path="footer.labName" />
         </div>
         <div className="footer-content">
           <address className="footer-address">
-            <span lang="en">304, Building 8, Sejong Common Campus, 109, Jiphyeonbuk-ro, Sejong, Republic of Korea</span>
-            <span lang="ko">세종특별자치시 집현북로 109, 세종공동캠퍼스 8동 304호</span>
-            <span>Tel: 044-863-9268</span>
+            <EditableText path="footer.addressEn" />
+            <EditableText path="footer.addressKo" />
+            <EditableText path="footer.tel" />
           </address>
         </div>
       </div>

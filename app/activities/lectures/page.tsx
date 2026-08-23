@@ -1,18 +1,11 @@
 import type { Metadata } from 'next';
-import { SectionPage } from '@/components/section-page';
+import { LecturesContentView } from '@/components/content/lectures-content';
+import { getBuildPageContent } from '@/lib/content-repository';
+import { DEFAULT_LECTURES_CONTENT, type LecturesContent } from '@/lib/site-content';
 
 export const metadata: Metadata = { title: 'Lectures' };
 
-export default function LecturesPage() {
-  return (
-    <SectionPage title="Lectures">
-      <section>
-        <h2>2026 Fall</h2>
-        <ul>
-          <li>Operating Systems (Undergraduate)</li>
-          <li>Discrete Mathematics (Undergraduate)</li>
-        </ul>
-      </section>
-    </SectionPage>
-  );
+export default async function LecturesPage() {
+  const content = await getBuildPageContent<LecturesContent>('lectures', DEFAULT_LECTURES_CONTENT);
+  return <LecturesContentView initialContent={content} />;
 }

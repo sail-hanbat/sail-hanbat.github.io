@@ -1,4 +1,8 @@
 import type { Metadata } from 'next';
+import { CmsAdminProvider } from '@/components/cms/cms-admin-provider';
+import { PageContentProvider } from '@/components/cms/page-content-provider';
+import { getBuildPageContent } from '@/lib/content-repository';
+import { DEFAULT_GLOBAL_CONTENT, type GlobalContent } from '@/lib/site-content';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -38,14 +42,22 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const globalContent = await getBuildPageContent<GlobalContent>('global', DEFAULT_GLOBAL_CONTENT);
+
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <CmsAdminProvider>
+          <PageContentProvider pageKey="global" initialContent={globalContent}>
+            {children}
+          </PageContentProvider>
+        </CmsAdminProvider>
+      </body>
     </html>
   );
 }
