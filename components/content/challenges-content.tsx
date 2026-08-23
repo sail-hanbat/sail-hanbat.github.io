@@ -45,7 +45,7 @@ function ChallengesBody() {
         {editMode && (
           <button className="cms-add-section" type="button" onClick={() => setContent((current) => ({
             ...current,
-            challenges: [...current.challenges, {
+            challenges: [{
               id: `challenge-${Date.now()}`,
               rank: 'Rank',
               percentile: 'Top %',
@@ -53,7 +53,7 @@ function ChallengesBody() {
               title: 'New Challenge',
               url: 'https://',
               description: 'Challenge result and description.',
-            }],
+            }, ...current.challenges],
           }))}>
             Add challenge
           </button>

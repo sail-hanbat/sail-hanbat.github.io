@@ -7,5 +7,5 @@ export const metadata: Metadata = { title: 'Domestic Publications' };
 
 export default async function DomesticPublicationsPage() {
   const content = await getBuildPageContent<PublicationsContent>('publications-domestic', DEFAULT_DOMESTIC_PUBLICATIONS);
-  return <PublicationsContentView pageKey="publications-domestic" initialContent={content} />;
+  return <PublicationsContentView pageKey="publications-domestic" initialContent={content} separatePatents />;
 }

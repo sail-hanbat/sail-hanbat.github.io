@@ -102,6 +102,7 @@ export type PublicationRecord = {
 export type PublicationsContent = {
   title: string;
   intro: string;
+  patentSectionTitle?: string;
   publications: PublicationRecord[];
 };
 
@@ -297,6 +298,7 @@ export const DEFAULT_INTERNATIONAL_PUBLICATIONS: PublicationsContent = {
 export const DEFAULT_DOMESTIC_PUBLICATIONS: PublicationsContent = {
   title: 'Domestic Publications',
   intro: 'Peer-reviewed domestic publications.',
+  patentSectionTitle: 'Patent',
   publications: [
     { id: 'phi-circuit-2026', year: '2026', type: 'Journal', title: '교차 레이어 트랜스코더 기반 Gemma-3-1B의 PHI 비식별화 결정 회로 분석', authors: 'Jaesin Ahn, Junhyun Bae, Jekyung Lee, and Heechul Jung', journal: '전자공학회논문지' },
     { id: 'diffusion-defense-2025', year: '2025', type: 'Conference', title: '안전한 디퓨전 모델을 위한 하이브리드 적대적 공격 방어 기법', authors: '안재신, 정희철', conference: '대한전자공학회 하계종합학술대회', yearFirst: true },

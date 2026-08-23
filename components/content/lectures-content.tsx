@@ -76,7 +76,7 @@ function LecturesBody() {
         {editMode && (
           <button className="cms-add-section" type="button" onClick={() => setContent((current) => ({
             ...current,
-            terms: [...current.terms, { id: `term-${Date.now()}`, title: 'New Term', courses: ['New course'] }],
+            terms: [{ id: `term-${Date.now()}`, title: 'New Term', courses: ['New course'] }, ...current.terms],
           }))}>
             Add term
           </button>

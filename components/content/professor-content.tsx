@@ -40,7 +40,7 @@ function ProfessorList({ listKey, titlePath }: { listKey: ListKey; titlePath: st
       {editMode && (
         <button className="cms-add-item" type="button" onClick={() => setContent((current) => ({
           ...current,
-          [listKey]: [...current[listKey], { title: 'New entry', detail: 'Details' }],
+          [listKey]: [{ title: 'New entry', detail: 'Details' }, ...current[listKey]],
         }))}>
           Add entry
         </button>
