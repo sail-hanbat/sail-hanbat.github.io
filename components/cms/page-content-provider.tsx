@@ -2,7 +2,7 @@
 
 import type { ReactNode } from 'react';
 import { createContext, useCallback, useContext, useEffect, useRef, useState } from 'react';
-import { contentRepository } from '@/lib/content-repository';
+import { contentRepository, mergeContentDefaults } from '@/lib/content-repository';
 import { useCmsAdmin } from '@/components/cms/cms-admin-provider';
 
 type PendingImage = { file: File; previewUrl: string };
@@ -81,8 +81,9 @@ export function PageContentProvider<T>({
         const cached = window.localStorage.getItem(cacheKey);
         if (cached && active) {
           const parsed = JSON.parse(cached) as { content: T; version: number };
-          setContentState(clone(parsed.content));
-          setSavedContent(clone(parsed.content));
+          const mergedContent = mergeContentDefaults(initialContent, parsed.content);
+          setContentState(clone(mergedContent));
+          setSavedContent(clone(mergedContent));
           setVersion(parsed.version);
         }
       } catch {
@@ -92,8 +93,9 @@ export function PageContentProvider<T>({
 
     void contentRepository.getPage<T>(pageKey).then((record) => {
       if (!active || !record) return;
-      setContentState(clone(record.content));
-      setSavedContent(clone(record.content));
+      const mergedContent = mergeContentDefaults(initialContent, record.content);
+      setContentState(clone(mergedContent));
+      setSavedContent(clone(mergedContent));
       setVersion(record.version);
       try {
         window.localStorage.setItem(cacheKey, JSON.stringify({ content: record.content, version: record.version }));
@@ -106,8 +108,9 @@ export function PageContentProvider<T>({
       if (!active) return;
       const dirty = JSON.stringify(contentRef.current) !== JSON.stringify(savedRef.current) || Object.keys(pendingRef.current).length > 0;
       if (dirty) return;
-      setContentState(clone(record.content));
-      setSavedContent(clone(record.content));
+      const mergedContent = mergeContentDefaults(initialContent, record.content);
+      setContentState(clone(mergedContent));
+      setSavedContent(clone(mergedContent));
       setVersion(record.version);
       try {
         window.localStorage.setItem(cacheKey, JSON.stringify({ content: record.content, version: record.version }));
@@ -121,7 +124,7 @@ export function PageContentProvider<T>({
       window.clearTimeout(cacheTimer);
       unsubscribe();
     };
-  }, [pageKey]);
+  }, [initialContent, pageKey]);
 
   const revokePendingImages = useCallback(() => {
     Object.values(pendingRef.current).forEach(({ previewUrl }) => URL.revokeObjectURL(previewUrl));

@@ -102,6 +102,7 @@ export type PublicationRecord = {
 export type PublicationsContent = {
   title: string;
   intro: string;
+  journalConferenceSectionTitle?: string;
   patentSectionTitle?: string;
   publications: PublicationRecord[];
 };
@@ -298,6 +299,7 @@ export const DEFAULT_INTERNATIONAL_PUBLICATIONS: PublicationsContent = {
 export const DEFAULT_DOMESTIC_PUBLICATIONS: PublicationsContent = {
   title: 'Domestic Publications',
   intro: 'Peer-reviewed domestic publications.',
+  journalConferenceSectionTitle: 'Journal & Conference',
   patentSectionTitle: 'Patent',
   publications: [
     { id: 'phi-circuit-2026', year: '2026', type: 'Journal', title: '교차 레이어 트랜스코더 기반 Gemma-3-1B의 PHI 비식별화 결정 회로 분석', authors: 'Jaesin Ahn, Junhyun Bae, Jekyung Lee, and Heechul Jung', journal: '전자공학회논문지' },

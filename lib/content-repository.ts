@@ -23,6 +23,23 @@ export interface ContentRepository {
   getImageUrl(path: string): string;
 }
 
+export function mergeContentDefaults<T>(defaults: T, stored: T): T {
+  if (Array.isArray(defaults) || Array.isArray(stored)) return stored;
+  if (
+    defaults === null || stored === null ||
+    typeof defaults !== 'object' || typeof stored !== 'object'
+  ) return stored;
+
+  const merged: Record<string, unknown> = { ...(defaults as Record<string, unknown>) };
+  for (const [key, value] of Object.entries(stored as Record<string, unknown>)) {
+    const fallbackValue = (defaults as Record<string, unknown>)[key];
+    merged[key] = fallbackValue === undefined
+      ? value
+      : mergeContentDefaults(fallbackValue, value);
+  }
+  return merged as T;
+}
+
 function toRecord<T>(row: SitePageRow): SitePageRecord<T> {
   return {
     pageKey: row.page_key,
@@ -135,7 +152,7 @@ export async function getBuildPageContent<T>(pageKey: string, fallback: T): Prom
 
     if (!response.ok) return fallback;
     const rows = await response.json() as Array<{ content?: T }>;
-    return rows[0]?.content ?? fallback;
+    return rows[0]?.content ? mergeContentDefaults(fallback, rows[0].content) : fallback;
   } catch {
     return fallback;
   }

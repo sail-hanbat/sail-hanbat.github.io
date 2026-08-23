@@ -5,7 +5,7 @@ import { EditableText, InlineListControls } from '@/components/cms/editable';
 import { usePageContent } from '@/components/cms/page-content-provider';
 import type { PublicationPresentation, PublicationsContent, PublicationType } from '@/lib/site-content';
 
-type PublicationFilter = 'All' | PublicationType;
+type PublicationFilter = 'All' | Exclude<PublicationType, 'Patent'>;
 type IndexedPublication = { publication: PublicationsContent['publications'][number]; index: number };
 
 function AuthorNames({ authors }: { authors: string }) {
@@ -20,9 +20,7 @@ export function PublicationList({ separatePatents = false }: { separatePatents?:
   const { content, setContent, editMode } = usePageContent<PublicationsContent>();
   const publications = content.publications;
   const [filter, setFilter] = useState<PublicationFilter>('All');
-  const filters: PublicationFilter[] = separatePatents
-    ? ['All', 'Journal', 'Conference', 'Patent']
-    : ['All', 'Journal', 'Conference'];
+  const filters: PublicationFilter[] = ['All', 'Journal', 'Conference'];
   const counts = publications.reduce<Record<PublicationType, number>>(
     (result, publication) => ({ ...result, [publication.type]: result[publication.type] + 1 }),
     { Journal: 0, Conference: 0, Patent: 0 },
@@ -33,8 +31,6 @@ export function PublicationList({ separatePatents = false }: { separatePatents?:
     publication.type !== 'Patent' && (filter === 'All' || publication.type === filter)
   ));
   const patentPublications = indexedPublications.filter(({ publication }) => publication.type === 'Patent');
-  const showMainSection = filter !== 'Patent';
-  const showPatentSection = separatePatents && (filter === 'All' || filter === 'Patent');
 
   function updatePublication(index: number, changes: Record<string, unknown>) {
     setContent((current) => {
@@ -184,31 +180,31 @@ export function PublicationList({ separatePatents = false }: { separatePatents?:
 
   return (
     <div className="publication-browser">
-      <div className="publication-filters" role="group" aria-label="Filter publications by type">
-        {availableFilters.map((item) => {
-          const count = item === 'All' ? publications.length : counts[item];
-          return (
-            <button className={`publication-filter${filter === item ? ' active' : ''}`} type="button" aria-pressed={filter === item} onClick={() => setFilter(item)} key={item}>
-              {item} <span>({count})</span>
-            </button>
-          );
-        })}
-      </div>
+      <section className="publication-main-section">
+        {separatePatents && <EditableText as="h2" className="publication-section-title" path="journalConferenceSectionTitle" />}
+        <div className="publication-filters" role="group" aria-label="Filter publications by type">
+          {availableFilters.map((item) => {
+            const count = item === 'All'
+              ? (separatePatents ? counts.Journal + counts.Conference : publications.length)
+              : counts[item];
+            return (
+              <button className={`publication-filter${filter === item ? ' active' : ''}`} type="button" aria-pressed={filter === item} onClick={() => setFilter(item)} key={item}>
+                {item} <span>({count})</span>
+              </button>
+            );
+          })}
+        </div>
+        <ol className="publication-list">{renderPublications(mainPublications)}</ol>
+        {editMode && (
+          <button className="cms-add-section" type="button" onClick={addJournalOrConference}>
+            Add journal or conference
+          </button>
+        )}
+      </section>
 
-      {showMainSection && (
-        <section className="publication-main-section">
-          <ol className="publication-list">{renderPublications(mainPublications)}</ol>
-          {editMode && (
-            <button className="cms-add-section" type="button" onClick={addJournalOrConference}>
-              Add journal or conference
-            </button>
-          )}
-        </section>
-      )}
-
-      {showPatentSection && (
-        <section className={`publication-patent-section${filter === 'Patent' ? ' patent-filter-only' : ''}`}>
-          <EditableText as="h2" path="patentSectionTitle" />
+      {separatePatents && (
+        <section className="publication-patent-section">
+          <EditableText as="h2" className="publication-section-title" path="patentSectionTitle" />
           <ol className="publication-list">{renderPublications(patentPublications)}</ol>
           {editMode && (
             <button className="cms-add-section" type="button" onClick={addPatent}>
