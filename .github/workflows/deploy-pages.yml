@@ -12,7 +12,9 @@ permissions:
   contents: read
 
 concurrency:
-  group: pages
+  # The previous `pages` group is held by a GitHub run with no jobs that
+  # rejects both cancellation endpoints. Keep new deployments independent.
+  group: sail-pages-deploy
   cancel-in-progress: true
 
 jobs:
