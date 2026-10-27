@@ -2,9 +2,9 @@
 
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
-import type { KeyboardEvent } from 'react';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useCmsAdmin } from '@/components/cms/cms-admin-provider';
+import { InlineText } from '@/components/cms/inline-text';
 import { NewsBody } from '@/components/news-body';
 import { formatNewsDate, newsRowToPost, type NewsPost } from '@/lib/news';
 import { newsRepository } from '@/lib/news-repository';
@@ -44,37 +44,6 @@ function toDraft(post: NewsPost): NewsDraft {
     date: dateInput(post.date),
     body: post.body,
   };
-}
-
-function InlineNewsTitle({ value, onChange }: { value: string; onChange: (value: string) => void }) {
-  const ref = useRef<HTMLHeadingElement | null>(null);
-
-  useEffect(() => {
-    if (ref.current && document.activeElement !== ref.current && ref.current.innerText !== value) {
-      ref.current.innerText = value;
-    }
-  }, [value]);
-
-  const onKeyDown = (event: KeyboardEvent<HTMLHeadingElement>) => {
-    if (event.key === 'Enter') {
-      event.preventDefault();
-      event.currentTarget.blur();
-    }
-  };
-
-  return (
-    <h1
-      ref={ref}
-      className="cms-editable-text"
-      contentEditable
-      suppressContentEditableWarning
-      spellCheck
-      onKeyDown={onKeyDown}
-      onInput={(event) => onChange(event.currentTarget.innerText)}
-    >
-      {value}
-    </h1>
-  );
 }
 
 export function NewsPostClient() {
@@ -193,11 +162,7 @@ export function NewsPostClient() {
       <header className="news-article-header">
         <div className="container article-container">
           <Link className="back-link" href="/activities/news/">← News</Link>
-          {editMode ? (
-            <InlineNewsTitle value={draft.title} onChange={(title) => setDraft((current) => current ? { ...current, title } : current)} />
-          ) : (
-            <h1>{draft.title}</h1>
-          )}
+          <InlineText as="h1" editing={editMode} value={draft.title} onChange={(title) => setDraft((current) => current ? { ...current, title } : current)} />
           <div className="news-article-meta">
             {editMode ? (
               <label className="cms-news-date">

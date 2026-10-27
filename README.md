@@ -39,6 +39,19 @@ implement those interfaces against the new service and replace the exported
 repositories; page components and inline editing controls do not need to
 change.
 
+### Inline editing regression tests
+
+```bash
+npx playwright install chromium
+npm run test:editing
+```
+
+The tests cover desktop/mobile layouts, caret placement, undo/redo, Korean
+composition events, Enter and multiline paste, Save/Cancel/reload, editable
+lists, publication authors, and News. Content and authentication requests are
+mocked in the test browser: no administrator credentials or production writes
+are used. For an installed Edge browser, set `PLAYWRIGHT_CHANNEL=msedge`.
+
 ## Design note
 
 The site takes high-level inspiration from the editorial layout and geometric

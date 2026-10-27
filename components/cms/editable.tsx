@@ -1,14 +1,15 @@
 'use client';
 
-import type { CSSProperties, ElementType, KeyboardEvent, MouseEvent } from 'react';
-import { useEffect, useRef } from 'react';
+import type { CSSProperties, ElementType } from 'react';
+import { useRef } from 'react';
+import { InlineText } from '@/components/cms/inline-text';
 import { usePageContent } from '@/components/cms/page-content-provider';
 
 export function EditableText({
   path,
   as = 'span',
   className,
-  multiline = false,
+  multiline = true,
   style,
 }: {
   path: string;
@@ -18,43 +19,17 @@ export function EditableText({
   style?: CSSProperties;
 }) {
   const { editMode, getValue, setValue } = usePageContent<unknown>();
-  const ref = useRef<HTMLElement | null>(null);
   const value = String(getValue(path) ?? '');
-
-  useEffect(() => {
-    if (ref.current && document.activeElement !== ref.current && ref.current.innerText !== value) {
-      ref.current.innerText = value;
-    }
-  }, [value]);
-
-  const stopEditClick = (event: MouseEvent) => {
-    if (!editMode) return;
-    event.preventDefault();
-    event.stopPropagation();
-  };
-
-  const onKeyDown = (event: KeyboardEvent<HTMLElement>) => {
-    if (event.key === 'Enter' && !multiline) {
-      event.preventDefault();
-      event.currentTarget.blur();
-    }
-  };
-
-  const Component = as;
   return (
-    <Component
-      ref={ref}
-      className={`${className ?? ''}${editMode ? ' cms-editable-text' : ''}`.trim()}
+    <InlineText
+      as={as}
+      className={className}
       style={style}
-      contentEditable={editMode}
-      suppressContentEditableWarning
-      spellCheck={editMode}
-      onClick={stopEditClick}
-      onKeyDown={onKeyDown}
-      onInput={(event: { currentTarget: HTMLElement }) => setValue(path, event.currentTarget.innerText)}
-    >
-      {value}
-    </Component>
+      multiline={multiline}
+      editing={editMode}
+      value={value}
+      onChange={(nextValue) => setValue(path, nextValue)}
+    />
   );
 }
 

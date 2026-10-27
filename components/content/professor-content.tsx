@@ -16,8 +16,8 @@ function ProfessorList({ listKey, titlePath }: { listKey: ListKey; titlePath: st
     <section className="professor-section">
       <EditableText as="h2" path={titlePath} />
       <ul className="professor-list">
-        {entries.map((entry, index) => (
-          <li key={`${entry.title}-${index}`}>
+        {entries.map((_, index) => (
+          <li key={index}>
             <EditableText as="strong" path={`${listKey}.${index}.title`} />
             <span>, </span>
             <EditableText path={`${listKey}.${index}.detail`} multiline />

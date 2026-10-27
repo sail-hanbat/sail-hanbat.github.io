@@ -47,7 +47,7 @@ export function NewsBody({ body }: { body: string }) {
           );
         }
 
-        return <p key={index}>{renderInline(lines.join(' '))}</p>;
+        return <p key={index}>{renderInline(lines.join('\n'))}</p>;
       })}
     </div>
   );

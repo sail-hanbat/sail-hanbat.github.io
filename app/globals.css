@@ -923,7 +923,7 @@ li {
 .contact-address-lines span {
   font-size: 14px;
   line-height: 1.65;
-  white-space: nowrap;
+  white-space: pre;
 }
 
 .contact-map h2 {
@@ -996,6 +996,14 @@ li {
 .news-body li {
   font-size: 18px;
   line-height: 1.8;
+}
+
+.news-body p,
+.news-body h2,
+.news-body h3,
+.news-card h3,
+.publication-authors {
+  white-space: pre-wrap;
 }
 
 .news-body ul {
@@ -1348,7 +1356,7 @@ li {
   margin-top: 7px;
   font-size: 11px;
   line-height: 1.2;
-  white-space: nowrap;
+  white-space: pre;
   text-transform: uppercase;
 }
 
@@ -1710,7 +1718,7 @@ li {
   }
 
   .contact-address-lines span {
-    white-space: normal;
+    white-space: pre-wrap;
   }
 
   .contact-map iframe {
@@ -1754,6 +1762,10 @@ li {
 }
 
 /* Inline site editing */
+.cms-text {
+  white-space: pre-wrap;
+}
+
 .cms-editable-text {
   border-radius: 2px;
   outline: 1px dashed rgba(140, 21, 21, 0.72);

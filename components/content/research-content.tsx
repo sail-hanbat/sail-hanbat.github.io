@@ -22,7 +22,7 @@ function ResearchBody() {
       <InteriorBody>
         <div className="research-track-grid research-track-grid-four">
           {content.tracks.map((track, trackIndex) => (
-            <article className="research-track" key={`${track.title}-${trackIndex}`}>
+            <article className="research-track" key={trackIndex}>
               <EditableText as="h2" path={`tracks.${trackIndex}.title`} />
               <InlineListControls
                 onMoveUp={trackIndex > 0 ? () => setContent((current) => ({ ...current, tracks: move(current.tracks, trackIndex, -1) })) : undefined}
@@ -31,8 +31,8 @@ function ResearchBody() {
               />
               <EditableText as="p" path={`tracks.${trackIndex}.description`} multiline />
               <ul>
-                {track.items.map((item, itemIndex) => (
-                  <li key={`${item}-${itemIndex}`}>
+                {track.items.map((_, itemIndex) => (
+                  <li key={itemIndex}>
                     <EditableText path={`tracks.${trackIndex}.items.${itemIndex}`} multiline />
                     <InlineListControls
                       onAdd={() => setContent((current) => {
